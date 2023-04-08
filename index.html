@@ -31,7 +31,8 @@
       Toló gyakorlatok <i class="fa fa-caret-right"></i>
     </a>
     <div id="tolo_gyakorlatok_acc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="fekvotamasz_huzodzkodon_magas">Fekvőtámasz húzódzkodón (magas)</a>
+      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="fekvotamasz_huzodzkodon_magas">Fekvőtámasz alacsony húzódzkodón (könnyebb)</a>
+      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="fekvotamasz_huzodzkodon_alacsony">Fekvőtámasz alacsony húzódzkodón (nehezebb)</a>
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="fekvotamasz_terdelesben">Fekvőtámasz térdelésben</a>
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="teljes_fekvotamasz">Teljes fekvőtámasz</a>
     </div>
@@ -275,12 +276,14 @@ var annotations_interval_id = -1;
 function load_exercise(element) {
   const uids = {
     "fekvotamasz_huzodzkodon_magas": 'ca8591b7c59d47efaeca9c2b1e9e7fd1',
+    "fekvotamasz_huzodzkodon_alacsony": 'acdd1a1c25f24742af3da28eedb1fd85',
     "fekvotamasz_terdelesben": '6555abb675d44898b73508ccd77959f0',
     "teljes_fekvotamasz": 'd9cd460de2514220bc1ebda84c578bfb'
   }
 
   const all_annotations = {
     "fekvotamasz_huzodzkodon_magas": [''],
+    "fekvotamasz_huzodzkodon_alacsony": [''],
     "fekvotamasz_terdelesben": [''],
     "teljes_fekvotamasz": [
       'Figyelj arra, hogy végig feszesen tartsd a törzsizmaid, beleértve a farizmokat is. A válltól a bokáig próbáld egy vonalban tartani a tested a gyakorlat közben.',
