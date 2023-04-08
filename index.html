@@ -35,6 +35,7 @@
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="fekvotamasz_huzodzkodon_alacsony">Fekvőtámasz alacsony húzódzkodón (nehezebb)</a>
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="fekvotamasz_terdelesben">Fekvőtámasz térdelésben</a>
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="teljes_fekvotamasz">Teljes fekvőtámasz</a>
+      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="szuk_fekvotamasz">Szűk fekvőtámasz</a>
     </div>
     <!-- <a onclick="toggle_accordion(this)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="huzo_gyakorlatok">
       Húzó gyakorlatok <i class="fa fa-caret-right"></i>
@@ -278,7 +279,8 @@ function load_exercise(element) {
     "fekvotamasz_huzodzkodon_magas": 'ca8591b7c59d47efaeca9c2b1e9e7fd1',
     "fekvotamasz_huzodzkodon_alacsony": 'acdd1a1c25f24742af3da28eedb1fd85',
     "fekvotamasz_terdelesben": '6555abb675d44898b73508ccd77959f0',
-    "teljes_fekvotamasz": 'd9cd460de2514220bc1ebda84c578bfb'
+    "teljes_fekvotamasz": 'd9cd460de2514220bc1ebda84c578bfb',
+    "szuk_fekvotamasz": '88bbb3554a3b491ba241a0d310d141c3'
   }
 
   const all_annotations = {
@@ -290,7 +292,8 @@ function load_exercise(element) {
       'A térdek végig legyenek nyújtva, esetleg minimálisan hajlítva.',
       'Ha ebben a pozícióban valamiért fájdalmat érzel a csuklódban, átmenetileg megpróbálhatod öklön végezni a gyakorlatot.',
       'A nyak maradjon természetes szögben, nem szükséges megfeszíteni vagy megemelni a fejet. De ne lógasd a fejed.'
-    ]
+    ],
+    "szuk_fekvotamasz": ['']
   }
 
   show_exercise_content();
