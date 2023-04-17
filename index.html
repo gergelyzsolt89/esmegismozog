@@ -38,13 +38,13 @@
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="szuk_fekvotamasz">Szűk fekvőtámasz</a>
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="felemas_fekvotamasz">Felemás fekvőtámasz</a>
     </div>
-    <!-- <a onclick="toggle_accordion(this)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="huzo_gyakorlatok">
+    <a onclick="toggle_accordion(this)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="huzo_gyakorlatok">
       Húzó gyakorlatok <i class="fa fa-caret-right"></i>
     </a>
     <div id="huzo_gyakorlatok_acc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="evezes">Evezés</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="teljes_huzodzkodas">Teljes húzódzkodás</a>
-    </div> -->
+      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="huzodzkodas_allva">Húzódzkodás állva</a>
+      <!-- <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="teljes_huzodzkodas">Teljes húzódzkodás</a> -->
+    </div>
     <!-- <a href="#" class="w3-bar-item w3-button">Shoes</a> -->
   </div>
   <!-- <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
@@ -282,7 +282,8 @@ function load_exercise(element) {
     "fekvotamasz_terdelesben": '6555abb675d44898b73508ccd77959f0',
     "teljes_fekvotamasz": 'd9cd460de2514220bc1ebda84c578bfb',
     "szuk_fekvotamasz": '88bbb3554a3b491ba241a0d310d141c3',
-    "felemas_fekvotamasz": '0df5638884044d60a26100f021fa4a50'
+    "felemas_fekvotamasz": '0df5638884044d60a26100f021fa4a50',
+    "huzodzkodas_allva": '5c8622be369640858ed6947d07701e6b'
   }
 
   const all_annotations = {
@@ -296,7 +297,8 @@ function load_exercise(element) {
       'A nyak maradjon természetes szögben, nem szükséges megfeszíteni vagy megemelni a fejet. De ne lógasd a fejed.'
     ],
     "szuk_fekvotamasz": [''],
-    "felemas_fekvotamasz": ['']
+    "felemas_fekvotamasz": [''],
+    "huzodzkodas_allva": ['']
   }
 
   show_exercise_content();
