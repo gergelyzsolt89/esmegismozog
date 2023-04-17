@@ -44,6 +44,7 @@
     <div id="huzo_gyakorlatok_acc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="huzodzkodas_allva">Húzódzkodás állva</a>
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="vizszintes_huzodzkodas_konnyebb">Vízszintes húzódzkodás (könnyebb)</a>
+      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="vizszintes_huzodzkodas_nehezebb">Vízszintes húzódzkodás (nehezebb)</a>
       <!-- <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button" id="teljes_huzodzkodas">Teljes húzódzkodás</a> -->
     </div>
     <!-- <a href="#" class="w3-bar-item w3-button">Shoes</a> -->
@@ -88,7 +89,7 @@
 
 
   <!-- Pomodoro -->
-  <div id="pomodoro" style="margin:auto">
+  <div class="w3-hide" id="pomodoro" style="margin:auto">
     <div id="options">
       <div id="session">
         <i id="incrSession" class="fas fa-angle-double-up" onclick="incrSession()"></i>
@@ -285,7 +286,8 @@ function load_exercise(element) {
     "szuk_fekvotamasz": '88bbb3554a3b491ba241a0d310d141c3',
     "felemas_fekvotamasz": '0df5638884044d60a26100f021fa4a50',
     "huzodzkodas_allva": '5c8622be369640858ed6947d07701e6b',
-    "vizszintes_huzodzkodas_konnyebb": '84fccca398204a018d2b6d228fd72e66'
+    "vizszintes_huzodzkodas_konnyebb": '84fccca398204a018d2b6d228fd72e66',
+    "vizszintes_huzodzkodas_nehezebb": 'ed57a8e2c5c94e4881fb550f536c86fc'
   }
 
   const all_annotations = {
@@ -314,6 +316,9 @@ function load_exercise(element) {
       ''
     ],
     "vizszintes_huzodzkodas_konnyebb": [
+      ''
+    ],
+    "vizszintes_huzodzkodas_nehezebb": [
       ''
     ]
   }
