@@ -50,11 +50,7 @@
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="feszitve_fuggeszkedes">Feszítve függeszkedés</a>
       <!-- <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button intermediate" id="teljes_huzodzkodas">Teljes húzódzkodás</a> -->
     </div>
-    <!-- <a href="#" class="w3-bar-item w3-button">Shoes</a> -->
   </div>
-  <!-- <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-  <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a> -->
 </nav>
 
 <!-- Top menu on small screens -->
@@ -74,10 +70,7 @@
   
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left" id="exercise-header">Fekvőtámasz térdelésben</p>
-    <!-- <p class="w3-right">
-      <i class="fa fa-search"></i>
-    </p> -->
+    <p class="w3-left" id="exercise-header"></p>
   </header>
 
   <!-- Sketchfab -->
@@ -90,41 +83,7 @@
     </div>
   </div>
 
-
-  <!-- Pomodoro -->
-  <div class="w3-hide" id="pomodoro" style="margin:auto">
-    <div id="options">
-      <div id="session">
-        <i id="incrSession" class="fas fa-angle-double-up" onclick="incrSession()"></i>
-        <span class="option-title">Edzés (perc)</span>
-        <input id="sessionInput" type="number" value="5" max="60" min="1">
-        <i id="decrSession" class="fas fa-angle-double-down" onclick="decrSession()"></i>
-      </div>
-      <div id="break">
-        <i id="incrBreak" class="fas fa-angle-double-up" onclick="incrBreak()"></i>
-        <span class="option-title">Pihenő (perc)</span>
-        <input id="breakInput" type="number" value="1" max="10" min="1">
-        <i id="decrBreak" class="fas fa-angle-double-down" onclick="decrBreak()"></i>
-      </div>
-    </div>
-    <div id="clock">
-      <div id="timer">
-        <div id="title">Kész vagy?</div>
-        <div id="countdown">
-          <span id="minutes">5</span>
-          <span id="seconds">00</span>
-        </div>
-        <div id="controls" class="reset">
-          <div id="start"><i class="fas fa-play"></i> Indít</div>
-          <div id="pause"><i class="fas fa-pause"></i> Szünet</div>
-          <div id="reset"><i class="fas fa-sync-alt"></i> Visszaállít</div>
-        </div>
-      </div>
-    </div>
-  </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <!-- <script src='https://use.fontawesome.com/releases/v5.0.6/js/all.js'></script> -->
-  <!-- <script  src="./script.js"></script> -->
   <script src="https://kit.fontawesome.com/8e657c9401.js" crossorigin="anonymous"></script>
 </div>
 
@@ -136,9 +95,6 @@
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-left">Üdv az oldalon!</p>
-    <!-- <p class="w3-right">
-      <i class="fa fa-search"></i>
-    </p> -->
   </header>
 
   <div class="w3-display-container w3-container">
@@ -170,77 +126,7 @@
 
 </div>
 
-<!-- Subscribe section -->
-<!-- <div class="w3-container w3-black w3-padding-32">
-<h1>Subscribe</h1>
-<p>To get special offers and VIP treatment:</p>
-<p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
-<button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
-</div> -->
-
-<!-- Footer -->
-<!-- <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
-  <div class="w3-row-padding">
-    <div>
-      <h4>Kapcsolat</h4>
-      <p>Kérdésed van? Írj bátran!</p>
-      <form action="/action_page.php" target="_blank">
-        <p><input class="w3-input w3-border" type="text" placeholder="Név" name="Name" required></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Tárgy" name="Subject" required></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Üzenet" name="Message" required></p>
-        <button type="submit" class="w3-button w3-block w3-black">Küldés</button>
-      </form>
-    </div>
-
-    <div class="w3-col s4">
-      <h4>About</h4>
-      <p><a href="#">About us</a></p>
-      <p><a href="#">We're hiring</a></p>
-      <p><a href="#">Support</a></p>
-      <p><a href="#">Find store</a></p>
-      <p><a href="#">Shipment</a></p>
-      <p><a href="#">Payment</a></p>
-      <p><a href="#">Gift card</a></p>
-      <p><a href="#">Return</a></p>
-      <p><a href="#">Help</a></p>
-    </div>
-
-    <div class="w3-col s4 w3-justify">
-      <h4>Store</h4>
-      <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
-      <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
-      <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
-      <h4>We accept</h4>
-      <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
-      <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
-      <br>
-      <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
-      <i class="fa fa-instagram w3-hover-opacity w3-large"></i>
-      <i class="fa fa-snapchat w3-hover-opacity w3-large"></i>
-      <i class="fa fa-pinterest-p w3-hover-opacity w3-large"></i>
-      <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
-      <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
-    </div>
-  </div>
-</footer> -->
-
-<!-- <div class="w3-black w3-center w3-padding-24">Made with <a href="https://www.w3schools.com/spaces" title="W3.CSS" target="_blank" class="w3-hover-opacity">W3Schools Spaces</a></div> -->
-
 <!-- End page content -->
-
-<!-- Newsletter Modal -->
-<!-- <div id="newsletter" class="w3-modal">
-  <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
-    <div class="w3-container w3-white w3-center">
-      <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
-      <h2 class="w3-wide">NEWSLETTER</h2>
-      <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
-      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
-    </div>
-  </div>
-</div> -->
 
 <script>
 // Accordion 
@@ -254,11 +140,6 @@ function toggle_accordion(element) {
     element.innerHTML = element.innerText + '<i class="fa fa-caret-down"></i>';
   }
 }
-
-// Click on the "Jeans" link on page load to open the accordion for demo purposes
-/*document.getElementById("tolo_gyakorlatok").click();
-document.getElementById("fekvotamasz_terdelesben").click();*/
-
 
 // Open and close sidebar
 function w3_open() {
@@ -403,8 +284,6 @@ function load_exercise(element) {
         api.addEventListener( 'viewerready', function() {
             
             // API is ready to use
-            // Insert your code here
-            // console.log( 'Viewer is ready' );
             
             // set BeStrong texture on models
             api.getMaterialList(function (err, materials) {
@@ -423,41 +302,6 @@ function load_exercise(element) {
               }
             });
             
-            /*api.getAnnotationList(function (err, annotations) {
-              if (!err) {
-                console.log(annotations);
-              }
-              var textDiv = document.getElementById('annotations-sync');
-              for (var k = 0; k < annotations.length; k++) {
-                api.hideAnnotation(k);
-              }
-              /*api.addEventListener('animationPlay', function() {
-                  for (var k = 0; k < annotations.length; k++) {
-                    api.hideAnnotation(k);
-                  }
-              });
-              api.addEventListener('animationStop', function() {
-                  for (var k = 0; k < annotations.length; k++) {
-                    api.showAnnotation(k);
-                  }
-              });*\/
-              /*api.addEventListener('annotationSelect', function (info) {
-                if (info === -1) {
-                  textDiv.innerHTML = '';
-                  return;
-                }
-                console.log('annotationSelect', info, annotations[info]);
-                textDiv.innerHTML = annotations[info].name + (annotations[info].content ? annotations[info].content.rendered : '');
-              });*\/
-              var l = annotations.length;
-              var i = 0;
-              textDiv.innerHTML = (annotations[i].content ? annotations[i].content.rendered : '');
-              setInterval(function () {
-                i++;
-                if (i === l) i = 0;
-                textDiv.innerHTML = (annotations[i].content ? annotations[i].content.rendered : '');
-              }, 10000);
-            });*/
             var l = annotations.length;
             var i = 0;
             textDiv.innerHTML = annotations[i];
@@ -475,154 +319,8 @@ function load_exercise(element) {
     camera: 0,
     preload: 1,
     scrollwheel: 0
-} );
+  } );
 }
-
-let $title = $("#title"),
-      $controls = $("#controls"),
-      $options = $("#options"),
-      $minutes = $("#minutes"),
-      $seconds = $("#seconds"),
-      $start = $("#start"),
-      $pause = $("#pause"),
-      $reset = $("#reset"),
-      $incrSession = $("#incrSession"),
-      $sessionInput = $("#sessionInput"),
-      $decrSession = $("#decrSession"),
-      $incrBreak = $("#incrBreak"),
-      $breakInput = $("#breakInput"),
-      $decrBreak = $("#decrBreak"),
-      breakLength = 1 * 60,
-      breakMax = 10,
-      breakMin = 1,
-      sessionLength = 5 * 60,
-      sessionMax = 60,
-      sessionMin = 2,
-      sessionNum = 0,
-      countdown,
-      countType,
-      remainingTime = sessionLength;
-
-init();
-
-  function init(){
-    /*
-    $incrSession.click(() => incrSession());
-    $decrSession.click(() => decrSession());
-    $incrBreak.click(() => incrBreak());
-    $decrBreak.click(() => decrBreak());
-    */
-    $sessionInput.on("change", e => updateSession(e.target.value));
-    $breakInput.on("change", e => updateBreak(e.target.value));
-    $start.click(() => { if (countType === "break"){ startBreak(); } else { startSession(); } });
-    $pause.click(() => pause());
-    $reset.click(() => reset());
-  }
-  function startSession(){
-    sessionNum++;
-    countType = "session";
-    $options.slideUp(143);
-    $controls.removeClass().addClass("started");
-    $title.fadeOut(43, function(){
-      $(this).html(sessionNum + ". Sorozat").fadeIn();
-    });
-    start(remainingTime || sessionLength);
-  }
-  function startBreak(){
-    countType = "break";
-    $title.fadeOut(43, function(){
-      $(this).html(sessionNum + ". Pihenő").fadeIn();
-    });
-    start(remainingTime || breakLength);
-  }
-  function start(timeLeft){
-    clearInterval(countdown);
-    countdown = setInterval(() => {
-      timeLeft--;
-      remainingTime = timeLeft;
-      let minLeft = Math.floor(timeLeft / 60),
-          secLeft = timeLeft - minLeft * 60;
-      updateMinutes(minLeft);
-      updateSeconds(secLeft < 10 ? "0" + secLeft : secLeft);
-      if (timeLeft < 1){
-        if (countType === "session"){
-          startBreak(breakLength);
-        } else {
-          startSession();
-        }
-      }
-    }, 1000);
-  }
-  function pause(){
-    sessionNum--;
-    clearInterval(countdown);
-    //$options.slideDown(143);
-    $controls.removeClass().addClass("paused");
-    $title.fadeOut(43, function(){
-      $(this).html("Szünet").fadeIn();
-    });
-  }
-  function reset(){
-    clearInterval(countdown);
-    $options.slideDown(143);
-    updateMinutes(sessionLength / 60);
-    updateSeconds("00");
-    countType = undefined;
-    $controls.removeClass().addClass("reset");
-    $title.html("Kész vagy?");
-    remainingTime = sessionLength;
-  }
-  function incrSession(){
-    let num = Number($sessionInput.val());
-    num = num + (num === sessionMax ? 0 : 1);
-    sessionLength = num * 60;
-    updateSession(num);
-    updateMinutes(num);
-    updateSeconds("00");
-    reset();
-  }
-  function decrSession(){
-    let num = Number($sessionInput.val());
-    num = num - (num === sessionMin ? 0 : 1);
-    sessionLength = num * 60;
-    updateSession(num);
-    updateMinutes(num);
-    updateSeconds("00");
-    reset();
-  }
-  function incrBreak(){
-    let num = Number($breakInput.val());
-    num = num + (num === breakMax ? 0 : 1);
-    breakLength = num * 60;
-    updateBreak(num);
-    reset();
-  }
-  function decrBreak(){
-    let num = Number($breakInput.val());
-    num = num - (num === breakMin ? 0 : 1);
-    breakLength = num * 60;
-    updateBreak(num);
-    reset();
-  }
-  function updateMinutes(num){
-    $minutes.text(num);
-  }
-  function updateSeconds(num){
-    $seconds.text(num);
-  }
-  function updateSession(num){
-    num = num < sessionMin ? sessionMin : num > sessionMax ? sessionMax : num;
-    $sessionInput.val(num).blur();
-    updateMinutes(num);
-    updateSeconds("00");
-    sessionLength = num * 60;
-    reset();
-  }
-  function updateBreak(num){
-    $breakInput.val(num < breakMin ? breakMin : num > breakMax ? breakMax : num).blur();
-    breakLength = num * 60;
-    reset();
-  }
 </script>
 
 </body>
