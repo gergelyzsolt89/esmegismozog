@@ -265,7 +265,6 @@ function load_exercise(element) {
   element.innerHTML = '<i class="fa fa-caret-right w3-margin-right" id="active-exercise"></i>'+element.innerText;
   element.classList.add("w3-light-grey");
 
-  reset();
   clearInterval(annotations_interval_id);
   var textDiv = document.getElementById('annotations-sync');
   textDiv.innerHTML = '';
