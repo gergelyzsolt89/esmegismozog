@@ -288,7 +288,7 @@ function load_exercise(element) {
             api.getMaterialList(function (err, materials) {
               for (var i = 0; i < materials.length; i++) {
                 var m = materials[i];
-                if (m.name == 'GEO-snow_shirt') {
+                if (m.name == 'snow.shirt') {
                   api.addTexture('https://gergelyzsolt89.github.io/esmegismozog/GEO-snow_shirt.jpg', function(err, textureUid) {
                       if (!err) {
                           m.channels.AlbedoPBR.texture = {uid: textureUid};
