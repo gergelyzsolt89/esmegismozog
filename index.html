@@ -289,7 +289,7 @@ function load_exercise(element) {
               for (var i = 0; i < materials.length; i++) {
                 var m = materials[i];
                 if (m.name == 'GEO-snow_shirt') {
-                  api.addTexture('https://gergelyzsolt89.github.io/esmegismozog/GEO-snow_shirt.png', function(err, textureUid) {
+                  api.addTexture('https://gergelyzsolt89.github.io/esmegismozog/GEO-snow_shirt.jpg', function(err, textureUid) {
                       if (!err) {
                           m.channels.AlbedoPBR.texture = {uid: textureUid};
                           m.channels.AlbedoPBR.color = false;
