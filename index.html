@@ -50,6 +50,12 @@
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="feszitve_fuggeszkedes">Feszítve függeszkedés</a>
       <!-- <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button intermediate" id="teljes_huzodzkodas">Teljes húzódzkodás</a> -->
     </div>
+    <a onclick="toggle_accordion(this)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="guggolas_gyakorlatok">
+      Guggolás gyakorlatok <i class="fa fa-caret-right"></i>
+    </a>
+    <div id="guggolas_gyakorlatok_acc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="fel_guggolas">Fél guggolás</a>
+    </div>
   </div>
 </nav>
 
@@ -191,7 +197,8 @@ function load_exercise(element) {
     "vizszintes_huzodzkodas_nehezebb": 'ed57a8e2c5c94e4881fb550f536c86fc',
     "huzodzkodas_konnyitve": '3441348df68f41e18e48f5357294fc52',
     "lapocka_huzodzkodas": '16efd5cc01f743748299b46ee3e26e89',
-    "feszitve_fuggeszkedes": 'f43566b2baa24f62a7b34da2a7f3e22e'
+    "feszitve_fuggeszkedes": 'f43566b2baa24f62a7b34da2a7f3e22e',
+    "fel_guggolas": '69c6bb54d5f548d3b134d9799d0693ee'
   }
 
   const all_annotations = {
@@ -249,6 +256,9 @@ function load_exercise(element) {
       ''
     ],
     "feszitve_fuggeszkedes": [
+      ''
+    ],
+    "fel_guggolas": [
       ''
     ]
   }
