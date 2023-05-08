@@ -26,6 +26,9 @@
   <div class="w3-padding-16 w3-container w3-display-container">
     <h4><b>Gyakorlat kategóriák</b></h4>
   </div>
+  <p onclick="clear_exercise_filter()" class="w3-hide" id="clear_filter" style="margin-left: 25px;padding-left:10px;cursor:pointer">
+    <b>Szűrő: </b>  <i class="fa fa-remove"></i>
+  </p>
   <div class="w3-large w3-text-grey" style="font-weight:bold">
     <a onclick="toggle_accordion(this)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="tolo_gyakorlatok">
       Toló gyakorlatok <i class="fa fa-caret-right"></i>
@@ -61,7 +64,7 @@
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-large">
-  <div onclick="show_welcome_content()" style="cursor:pointer" class="w3-bar-item w3-padding-24 w3-wide">ÉS MÉGIS MOZOG</div>
+  <div onclick="show_welcome_content()" id="small_header" style="cursor:pointer" class="w3-bar-item w3-padding-24 w3-wide">ÉS MÉGIS MOZOG</div>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 </header>
 
@@ -113,19 +116,19 @@
       A gyakorlatok kategóriákba vannak sorolva, amiket a bal oldalon található menüben érhetsz el.
       A kategóriákon belül fentről lefelé egyre nehezebbek a gyakorlatok, ezt színkóddal is jelöltük:
     </p>
-    <p class="novice" style="margin-left: 25px;padding-left:10px">
+    <p onclick="filter_exercises(this)" class="novice" style="margin-left: 25px;padding-left:10px;cursor:pointer">
       Teljesen kezdő
     </p>
-    <p class="beginner" style="margin-left: 25px;padding-left:10px">
+    <p onclick="filter_exercises(this)" class="beginner" style="margin-left: 25px;padding-left:10px;cursor:pointer">
       Kezdő
     </p>
-    <p class="intermediate" style="margin-left: 25px;padding-left:10px">
+    <p onclick="filter_exercises(this)" class="intermediate" style="margin-left: 25px;padding-left:10px;cursor:pointer">
       Középhaladó
     </p>
-    <p class="advanced" style="margin-left: 25px;padding-left:10px">
+    <p onclick="filter_exercises(this)" class="advanced" style="margin-left: 25px;padding-left:10px;cursor:pointer">
       Haladó
     </p>
-    <p class="elite" style="margin-left: 25px;padding-left:10px">
+    <p onclick="filter_exercises(this)" class="elite" style="margin-left: 25px;padding-left:10px;cursor:pointer">
       Elit
     </p>
   </div>
@@ -147,6 +150,22 @@ function toggle_accordion(element) {
   }
 }
 
+function open_accordion(element) {
+  const acc = document.getElementById(element.id+"_acc");
+  if (!acc.classList.contains("w3-show")) {
+    acc.classList.add("w3-show");
+    element.innerHTML = element.innerText + '<i class="fa fa-caret-down"></i>';
+  }
+}
+
+function close_accordion(element) {
+  const acc = document.getElementById(element.id+"_acc");
+  if (acc.classList.contains("w3-show")) {
+    acc.classList.remove("w3-show");
+    element.innerHTML = element.innerText + '<i class="fa fa-caret-right"></i>';
+  }
+}
+
 // Open and close sidebar
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
@@ -156,6 +175,48 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("myOverlay").style.display = "none";
+}
+
+// Filter exercises
+function filter_exercises(element) {
+  clear_exercise_filter();
+  filter = element.classList[0];
+  const exercises = document.querySelectorAll("a.novice,a.beginner,a.intermediate,a.advanced,a.elite");
+  for (let i = 0; i < exercises.length; i++) {
+    if (!exercises[i].classList.contains(filter)){
+      exercises[i].classList.add("w3-hide");
+    }
+  }
+  if (document.getElementById("small_header").getClientRects().length) {
+    w3_open();
+  }
+  const accordions = document.querySelectorAll(`[id$="_gyakorlatok"]`);
+  for (let i = 0; i < accordions.length; i++) {
+    open_accordion(accordions[i]);
+  }
+  
+  clear_filter = document.getElementById("clear_filter");
+  clear_filter.innerHTML = '<b>Szűrő: </b>' + element.innerText + '  <i class="fa fa-remove"></i>';
+  if (clear_filter.classList.contains("w3-hide")){
+    clear_filter.classList.remove("w3-hide");
+  }
+}
+
+function clear_exercise_filter() {
+  const exercises = document.querySelectorAll("a.novice,a.beginner,a.intermediate,a.advanced,a.elite");
+  for (let i = 0; i < exercises.length; i++) {
+    if (exercises[i].classList.contains("w3-hide")){
+      exercises[i].classList.remove("w3-hide");
+    }
+  }
+  clear_filter = document.getElementById("clear_filter");
+  if (!clear_filter.classList.contains("w3-hide")){
+    clear_filter.classList.add("w3-hide");
+  }
+  const accordions = document.querySelectorAll(`[id$="_gyakorlatok"]`);
+  for (let i = 0; i < accordions.length; i++) {
+    close_accordion(accordions[i]);
+  }
 }
 
 // Change content
@@ -180,6 +241,7 @@ function show_welcome_content() {
     active_exercise_node.remove();
   }
   w3_close();
+  clear_exercise_filter();
 }
 
 var annotations_interval_id = -1;
@@ -320,6 +382,9 @@ function load_exercise(element) {
               textDiv.innerHTML = annotations[i];
             }, 10000);
         } );
+        /*api.addEventListener('animationEnded', function() {
+            window.console.log('One more rep');
+        });*/
     },
     error: function onError() {
         console.log( 'Viewer error' );
