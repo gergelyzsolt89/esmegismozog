@@ -59,6 +59,7 @@
     <div id="guggolas_gyakorlatok_acc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="fel_guggolas">Fél guggolás</a>
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="guggolas_konnyitve">Guggolás könnyítve</a>
+      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="kitores">Kitörés</a>
     </div>
   </div>
 </nav>
@@ -270,7 +271,8 @@ function load_exercise(element) {
     "lapocka_huzodzkodas": '16efd5cc01f743748299b46ee3e26e89',
     "feszitve_fuggeszkedes": 'f43566b2baa24f62a7b34da2a7f3e22e',
     "fel_guggolas": '69c6bb54d5f548d3b134d9799d0693ee',
-    "guggolas_konnyitve": '0f11a5f237a04eb791b5c1a3d1287ffd'
+    "guggolas_konnyitve": '0f11a5f237a04eb791b5c1a3d1287ffd',
+    "kitores": 'a459070034af42b3a0fd5cdac82054b1'
   }
 
   const all_annotations = {
@@ -386,7 +388,17 @@ function load_exercise(element) {
       'A térd a lábfej irányában mozduljon el, ne hagyd, hogy kifelé vagy befelé eltérjen ettől a síktól.',
       'A sarkad végig maradjon a talajon.',
       'Ha nehéznek bizonyul mélyre guggolni, akkor érdemes az alsó pozícióban hosszabb időt eltölteni, szükség szerint kapaszkodva. Ez a mobilitásodat is javíthatja.'
-    ]
+    ],
+    "kitores": [
+      'Próbálj olyan harántterpeszt felvenni, amelynél az elöl és hátul levő lábfej között kb. 2-3 lábfejnyi a távolság.',
+      'Az elöl levő lábad talpa végig maradjon a talajon, a sarkad se emeld fel.',
+      'A hátul levő lábnál viszont a gyakorlat során nem ér le a sarok a talajra.',
+      'Kb. derékszökig hajlítsd mindkét térded.',
+      'Vigyázz, hogy a térded ne koppanjon a talajon, inkább állítsd meg néhány centire a talajtól, vagy érintsd le óvatosan.',
+      'A felsőtested végig egyenes maradjon, a fejed se lógasd.',
+      'A súlypontod tartsd középen, hogy a két lábad egyformán terheld.',
+      'A térd végig maradjon a lábfej síkjában.'
+    ],
   }
 
   show_exercise_content();
