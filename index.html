@@ -62,6 +62,12 @@
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="kitores">Kitörés</a>
       <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="teljes_guggolas">Teljes guggolás</a>
     </div>
+     <a onclick="toggle_accordion(this)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="torzs_gyakorlatok">
+      Törzsizom gyakorlatok <i class="fa fa-caret-right"></i>
+    </a>
+    <div id="torzs_gyakorlatok_acc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="terdemeles_hanyattfekvesben">Térdemelés hanyattfekvésben</a>
+    </div>
   </div>
 </nav>
 
@@ -275,6 +281,7 @@ function load_exercise(element) {
     "guggolas_konnyitve": '0f11a5f237a04eb791b5c1a3d1287ffd',
     "kitores": 'a459070034af42b3a0fd5cdac82054b1',
     "teljes_guggolas": '7fd9f2468ca4486bad4da7a2ca2435dc',
+    "terdemeles_hanyattfekvesben": '05f143bc42394caea0eea1028827e12e',
   }
 
   const all_annotations = {
@@ -411,6 +418,13 @@ function load_exercise(element) {
       'A térded végig nagyjából a lábfejed felett maradjon.',
       'Ha nehéznek bizonyul mélyre guggolni, akkor érdemes az alsó pozícióban hosszabb időt eltölteni, szükség szerint kapaszkodva. Ez a mobilitásodat is javíthatja.',
       'Kezdheted olyan mély guggolással, hogy a combod és a sípcsontod derékszöget zárjon be, és több hét alatt próbálj egyre mélyebbre guggolni.'
+    ],
+    "terdemeles_hanyattfekvesben": [
+      'A gyakorlat során az alsóháti szakaszt végig a talajon kell tartani.',
+      'A megfelelő medence helyzet azzal ellenőrizhető, hogy a derekad feletti részen a talaj és a hátad közé nem fér be a kezed.',
+      'A fejedet leteheted a talajra, de ha úgy kényelmesebb, kicsit megemelheted. Viszont ne feszíts rá a nyakizmaidra.',
+      'A karod a test mellett a talajon lehet, de ne segíts vele! A térded csak a törzsizmok munkájával húzd fel.',
+      'A gyakorlat alsó pozíciójában a sarkad ne érjen le a földre, néhány centire állítsd meg. Ha a mozgástartomány ellenőrzése miatt mégis leérinted, akkor éppen csak egy pillanatra tedd.'
     ],
   }
 
