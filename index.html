@@ -502,6 +502,8 @@ function load_exercise(element) {
   const iframe = document.getElementById( 'api-frame' );
   const uid = uids[element.id];
   const annotations = all_annotations[element.id];
+
+  document.cookie = "exercise="+element.id;
   
   // By default, the latest version of the viewer API will be used.
   var client = new Sketchfab( iframe );
