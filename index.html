@@ -10,17 +10,39 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-    .w3-sidebar a {font-family: "Roboto", sans-serif}
-    body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+      .w3-sidebar a {font-family: "Roboto", sans-serif}
+      body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+      .label {
+        color: #FFF;
+        font-family: sans-serif;
+        padding: 2px;
+        background: rgba( 0, 0, 0, .6 );
+        -webkit-user-select: none; /* Safari, Chrome */
+        -moz-user-select: none;    /* Firefox */
+        -ms-user-select: none;     /* Internet Explorer/Edge (old) */
+        user-select: none;         /* Standard */
+        cursor: default;
+      }
     </style>
-    <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@v0.175.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.175.0/examples/jsm/",
+        "three/webgpu": "https://cdn.jsdelivr.net/npm/three@v0.175.0/build/three.webgpu.js",
+        "three/tsl": "https://cdn.jsdelivr.net/npm/three@v0.175.0/build/three.tsl.js"
+      }
+    }
+    </script>
+    <base href="/esmegismozog/">
   </head>
 <body class="w3-content" style="max-width:1200px">
   
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-<script src="https://kit.fontawesome.com/8e657c9401.js" crossorigin="anonymous"></script>
+<script src="/esmegismozog/8e657c9401.js" crossorigin="anonymous"></script>
+<script type="module" src="/esmegismozog/main.js" crossorigin="anonymous"></script>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
@@ -35,46 +57,46 @@
     <b>Szűrő: </b>  <i class="fa fa-remove"></i>
   </p>
   <div class="w3-large w3-text-grey" style="font-weight:bold">
-    <a onclick="toggle_accordion(this)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="tolo_gyakorlatok">
+    <a href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align category-button" id="tolo_gyakorlatok">
       Toló gyakorlatok <i class="fa fa-caret-right"></i>
     </a>
     <div id="tolo_gyakorlatok_acc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="fekvotamasz_huzodzkodon_magas">Fekvőtámasz alacsony húzódzkodón (könnyebb)</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="fekvotamasz_huzodzkodon_alacsony">Fekvőtámasz alacsony húzódzkodón (nehezebb)</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="fekvotamasz_terdelesben">Fekvőtámasz térdelésben</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="teljes_fekvotamasz">Teljes fekvőtámasz</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button intermediate" id="szuk_fekvotamasz">Szűk fekvőtámasz</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button intermediate" id="felemas_fekvotamasz">Felemás fekvőtámasz</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button novice" id="fekvotamasz_huzodzkodon_magas">Fekvőtámasz alacsony húzódzkodón (könnyebb)</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button novice" id="fekvotamasz_huzodzkodon_alacsony">Fekvőtámasz alacsony húzódzkodón (nehezebb)</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button novice" id="fekvotamasz_terdelesben">Fekvőtámasz térdelésben</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button beginner" id="teljes_fekvotamasz">Teljes fekvőtámasz</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button intermediate" id="szuk_fekvotamasz">Szűk fekvőtámasz</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button intermediate" id="felemas_fekvotamasz">Felemás fekvőtámasz</a>
     </div>
-    <a onclick="toggle_accordion(this)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="huzo_gyakorlatok">
+    <a href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align category-button" id="huzo_gyakorlatok">
       Húzó gyakorlatok <i class="fa fa-caret-right"></i>
     </a>
     <div id="huzo_gyakorlatok_acc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="huzodzkodas_allva">Húzódzkodás állva</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="vizszintes_huzodzkodas_konnyebb">Vízszintes húzódzkodás (könnyebb)</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="vizszintes_huzodzkodas_nehezebb">Vízszintes húzódzkodás (nehezebb)</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="huzodzkodas_konnyitve">Húzódzkodás könnyítve</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="lapocka_huzodzkodas">Lapocka húzódzkodás</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="feszitve_fuggeszkedes">Feszítve függeszkedés</a>
-      <!-- <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button intermediate" id="teljes_huzodzkodas">Teljes húzódzkodás</a> -->
+      <a href="#" class="w3-bar-item w3-button exercise-button novice" id="huzodzkodas_allva">Húzódzkodás állva</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button novice" id="vizszintes_huzodzkodas_konnyebb">Vízszintes húzódzkodás (könnyebb)</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button beginner" id="vizszintes_huzodzkodas_nehezebb">Vízszintes húzódzkodás (nehezebb)</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button beginner" id="huzodzkodas_konnyitve">Húzódzkodás könnyítve</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button beginner" id="lapocka_huzodzkodas">Lapocka húzódzkodás</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button beginner" id="feszitve_fuggeszkedes">Feszítve függeszkedés</a>
+      <!-- <a href="#" class="w3-bar-item w3-button exercise-button intermediate" id="teljes_huzodzkodas">Teljes húzódzkodás</a> -->
     </div>
-    <a onclick="toggle_accordion(this)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="guggolas_gyakorlatok">
+    <a href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align category-button" id="guggolas_gyakorlatok">
       Guggolás gyakorlatok <i class="fa fa-caret-right"></i>
     </a>
     <div id="guggolas_gyakorlatok_acc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="fel_guggolas">Fél guggolás</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="guggolas_konnyitve">Guggolás könnyítve</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="kitores">Kitörés</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="teljes_guggolas">Teljes guggolás</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button novice" id="fel_guggolas">Fél guggolás</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button novice" id="guggolas_konnyitve">Guggolás könnyítve</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button beginner" id="kitores">Kitörés</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button beginner" id="teljes_guggolas">Teljes guggolás</a>
     </div>
-     <a onclick="toggle_accordion(this)" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="torzs_gyakorlatok">
+     <a href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align category-button" id="torzs_gyakorlatok">
       Törzsizom gyakorlatok <i class="fa fa-caret-right"></i>
     </a>
     <div id="torzs_gyakorlatok_acc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="terdemeles_hanyattfekvesben">Térdemelés hanyattfekvésben</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button novice" id="terdemeles_padon">Térdemelés padon</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="labemeles_hanyattfekvesben">Lábemelés hanyattfekvésben</a>
-      <a href="#" onclick="load_exercise(this)" class="w3-bar-item w3-button beginner" id="terdemeles_fuggeszkedesben">Térdemelés függeszkedésben</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button novice" id="terdemeles_hanyattfekvesben">Térdemelés hanyattfekvésben</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button novice" id="terdemeles_padon">Térdemelés padon</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button beginner" id="labemeles_hanyattfekvesben">Lábemelés hanyattfekvésben</a>
+      <a href="#" class="w3-bar-item w3-button exercise-button beginner" id="terdemeles_fuggeszkedesben">Térdemelés függeszkedésben</a>
     </div>
   </div>
 </nav>
@@ -99,11 +121,9 @@
     <p class="w3-left" id="exercise-header"></p>
   </header>
 
-  <!-- Sketchfab -->
+  <!-- glTF Viewer -->
   <div class="w3-display-container w3-container">
-    <div class="sketchfab-container">
-      <iframe class="sketchfab-iframe" src="" id="api-frame" frameborder="0" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-    </div>
+    <div style="width: 100%; position: relative; padding-bottom: 56.25%;"><canvas id="c" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas></div>
     <div class="w3-display-container w3-container w3-light-grey w3-small w3-center" style="height:90px">
       <p id="annotations-sync"></p>
     </div>
@@ -114,7 +134,6 @@
   <footer class="w3-black w3-center w3-padding-24 w3-small" id="footer">
     <div class="w3-row-padding">
       <p>Jogi megjegyzés: Bármilyen edzésprogram megkezdése előtt konzultáljon orvosával. Ez a weboldal nem helyettesíti a fizikoterápiás programot vagy az egészségügyi szakemberrel folytatott konzultációt.</p>
-      <p>Snow Rig © Blender Foundation | studio.blender.org</p>
     </div>
   </footer>
 </div>
@@ -182,379 +201,401 @@
 
 <!-- End page content -->
 
-<script>
-// Accordion 
-function toggle_accordion(element) {
-  const acc = document.getElementById(element.id+"_acc");
-  if (acc.classList.contains("w3-show")) {
-    acc.classList.remove("w3-show");
-    element.innerHTML = element.innerText + '<i class="fa fa-caret-right"></i>';
-  } else {
-    acc.classList.add("w3-show");
-    element.innerHTML = element.innerText + '<i class="fa fa-caret-down"></i>';
-  }
-}
+<script type="module">
+  import { viewer } from '/main.js';
 
-function open_accordion(element) {
-  const acc = document.getElementById(element.id+"_acc");
-  if (!acc.classList.contains("w3-show")) {
-    acc.classList.add("w3-show");
-    element.innerHTML = element.innerText + '<i class="fa fa-caret-down"></i>';
-  }
-}
-
-function close_accordion(element) {
-  const acc = document.getElementById(element.id+"_acc");
-  if (acc.classList.contains("w3-show")) {
-    acc.classList.remove("w3-show");
-    element.innerHTML = element.innerText + '<i class="fa fa-caret-right"></i>';
-  }
-}
-
-// Open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-
-// Filter exercises
-function filter_exercises(element) {
-  clear_exercise_filter();
-  filter = element.classList[0];
-  const exercises = document.querySelectorAll("a.novice,a.beginner,a.intermediate,a.advanced,a.elite");
-  for (let i = 0; i < exercises.length; i++) {
-    if (!exercises[i].classList.contains(filter)){
-      exercises[i].classList.add("w3-hide");
+  // Accordion 
+  function toggle_accordion(event) {
+    const element = event.currentTarget;
+    const acc = document.getElementById(element.id+"_acc");
+    if (acc.classList.contains("w3-show")) {
+      acc.classList.remove("w3-show");
+      element.innerHTML = element.innerText + '<i class="fa fa-caret-right"></i>';
+    } else {
+      acc.classList.add("w3-show");
+      element.innerHTML = element.innerText + '<i class="fa fa-caret-down"></i>';
     }
   }
-  if (document.getElementById("small_header").getClientRects().length) {
-    w3_open();
-  }
-  const accordions = document.querySelectorAll(`[id$="_gyakorlatok"]`);
-  for (let i = 0; i < accordions.length; i++) {
-    open_accordion(accordions[i]);
-  }
-  
-  clear_filter = document.getElementById("clear_filter");
-  clear_filter.innerHTML = '<b>Szűrő: </b>' + element.innerText + '  <i class="fa fa-remove"></i>';
-  if (clear_filter.classList.contains("w3-hide")){
-    clear_filter.classList.remove("w3-hide");
-  }
-}
 
-function clear_exercise_filter() {
-  const exercises = document.querySelectorAll("a.novice,a.beginner,a.intermediate,a.advanced,a.elite");
-  for (let i = 0; i < exercises.length; i++) {
-    if (exercises[i].classList.contains("w3-hide")){
-      exercises[i].classList.remove("w3-hide");
+  function open_accordion(element) {
+    const acc = document.getElementById(element.id+"_acc");
+    if (!acc.classList.contains("w3-show")) {
+      acc.classList.add("w3-show");
+      element.innerHTML = element.innerText + '<i class="fa fa-caret-down"></i>';
     }
   }
-  clear_filter = document.getElementById("clear_filter");
-  if (!clear_filter.classList.contains("w3-hide")){
-    clear_filter.classList.add("w3-hide");
-  }
-  const accordions = document.querySelectorAll(`[id$="_gyakorlatok"]`);
-  for (let i = 0; i < accordions.length; i++) {
-    close_accordion(accordions[i]);
-  }
-}
 
-// Change content
-function show_exercise_content() {
-  const exercise_content = document.getElementById("exercise_content")
-  if (exercise_content.classList.contains("w3-hide")) {
-    exercise_content.classList.remove("w3-hide");
-    document.getElementById("welcome_content").classList.add("w3-hide");
-  }
-  w3_close();
-}
-
-function show_welcome_content() {
-  const welcome_content = document.getElementById("welcome_content")
-  if (welcome_content.classList.contains("w3-hide")) {
-    welcome_content.classList.remove("w3-hide");
-    document.getElementById("exercise_content").classList.add("w3-hide");
-  }
-  const active_exercise_node = document.getElementById("active-exercise");
-  if (active_exercise_node) {
-    active_exercise_node.parentElement.classList.remove("w3-light-grey");
-    active_exercise_node.remove();
-  }
-  w3_close();
-  clear_exercise_filter();
-}
-
-var annotations_interval_id = -1;
-
-function load_exercise(element) {
-  const uids = {
-    "fekvotamasz_huzodzkodon_magas": 'ca8591b7c59d47efaeca9c2b1e9e7fd1',
-    "fekvotamasz_huzodzkodon_alacsony": 'acdd1a1c25f24742af3da28eedb1fd85',
-    "fekvotamasz_terdelesben": '6555abb675d44898b73508ccd77959f0',
-    "teljes_fekvotamasz": 'd9cd460de2514220bc1ebda84c578bfb',
-    "szuk_fekvotamasz": '88bbb3554a3b491ba241a0d310d141c3',
-    "felemas_fekvotamasz": '0df5638884044d60a26100f021fa4a50',
-    "huzodzkodas_allva": '5c8622be369640858ed6947d07701e6b',
-    "vizszintes_huzodzkodas_konnyebb": '84fccca398204a018d2b6d228fd72e66',
-    "vizszintes_huzodzkodas_nehezebb": 'ed57a8e2c5c94e4881fb550f536c86fc',
-    "huzodzkodas_konnyitve": '3441348df68f41e18e48f5357294fc52',
-    "lapocka_huzodzkodas": '16efd5cc01f743748299b46ee3e26e89',
-    "feszitve_fuggeszkedes": 'f43566b2baa24f62a7b34da2a7f3e22e',
-    "fel_guggolas": '69c6bb54d5f548d3b134d9799d0693ee',
-    "guggolas_konnyitve": '0f11a5f237a04eb791b5c1a3d1287ffd',
-    "kitores": 'a459070034af42b3a0fd5cdac82054b1',
-    "teljes_guggolas": '7fd9f2468ca4486bad4da7a2ca2435dc',
-    "terdemeles_hanyattfekvesben": '05f143bc42394caea0eea1028827e12e',
-    "terdemeles_padon": 'e3f554c623504d25aacd12359d4865e8',
-    "labemeles_hanyattfekvesben": '7056f3cc54484036aaf961f8c7678388',
-    "terdemeles_fuggeszkedesben": 'ad1bb198d4e045a48b4b6c89e5c25bbb',
+  function close_accordion(element) {
+    const acc = document.getElementById(element.id+"_acc");
+    if (acc.classList.contains("w3-show")) {
+      acc.classList.remove("w3-show");
+      element.innerHTML = element.innerText + '<i class="fa fa-caret-right"></i>';
+    }
   }
 
-  const all_annotations = {
-    "fekvotamasz_huzodzkodon_magas": [
-      'Figyelj arra, hogy végig feszesen tartsd a törzsizmaid, beleértve a farizmokat is. A válltól a bokáig próbáld egy vonalban tartani a tested a gyakorlat közben.',
-      'A könyököd végig maradjon a tested mellett.',
-      'A kiinduló helyzetben ne állj teljesen függőlegesen, maradjanak az izmok feszesen.'
-    ],
-    "fekvotamasz_huzodzkodon_alacsony": [
-      'Figyelj arra, hogy végig feszesen tartsd a törzsizmaid, beleértve a farizmokat is. A válltól a bokáig próbáld egy vonalban tartani a tested a gyakorlat közben.',
-      'A könyököd végig maradjon a tested mellett.',
-      'A mellkas majdnem megérinti a rudat az alsó pozícióban, a kiinduló helyzetben a könyökök szinte teljes nyújtva vannak.'
-    ],
-    "fekvotamasz_terdelesben": [
-      'Figyelj arra, hogy végig feszesen tartsd a törzsizmaid, beleértve a farizmokat is. A válltól a térdig próbáld egy vonalban tartani a tested a gyakorlat közben.',
-      'A könyököd végig maradjon a tested mellett.',
-      'A lábfejek lehetnek a levegőben, de a talajon is lehetnek lábujjhegyen. Ez utóbbi segíthet feszesebben tartani az alsó testet.',
-      'Markold meg a talajt, ahogy a könnyebb gyakorlatoknál a rudat. A tenyér hüvelykujj felőli részét is végig tartsd a talajon.'
-    ],
-    "teljes_fekvotamasz": [
-      'Tartsd végig feszesen a törzsizmaid, beleértve a farizmokat is. A válltól a bokáig próbáld egy vonalban tartani a tested a gyakorlat közben.',
-      'A térdek végig legyenek nyújtva, esetleg minimálisan hajlítva.',
-      'Ha ebben a pozícióban valamiért fájdalmat érzel a csuklódban, átmenetileg megpróbálhatod öklön végezni a gyakorlatot.',
-      'A nyak maradjon természetes szögben, nem szükséges megfeszíteni vagy megemelni a fejet. De ne lógasd a fejed.',
-      'A könyököd végig maradjon a tested mellett.',
-      'Markold meg a talajt, a tenyér hüvelykujj felőli részét is végig tartsd a talajon.'
-    ],
-    "szuk_fekvotamasz": [
-      'Tartsd végig feszesen a törzsizmaid, beleértve a farizmokat is.',
-      'A térdek végig legyenek nyújtva, esetleg minimálisan hajlítva.',
-      'A tenyerek itt már nem párhuzamosak egymással, a mutatóujjak össze is érhetnek.',
-      'A könyök a test mellett marad, az alkar az ujjak vonalában legyen.',
-      'A tenyér hüvelykujj felőli részét is végig tartsd a talajon. Ennél a gyakorlatnál ez nehezebb!'
-    ],
-    "felemas_fekvotamasz": [
-      'Tartsd végig feszesen a törzsizmaid, beleértve a farizmokat is.',
-      'A térdek végig legyenek nyújtva, esetleg minimálisan hajlítva.',
-      'A két kar nem egyformán dolgozik: a váll alatt maradó karnak kell a munka nagy részét elvégeznie.',
-      'A kiinduló helyzetben nyújtott kar segít, de most még az alsó pozícióban behajlíthatod.',
-      'A segítő kar minél távolabb van a testtől, annál kevesebbet tud segíteni.',
-      'Ne felejtsd el mindkét oldalra elvégezni a gyakorlatot!'
-    ],
-    "huzodzkodas_allva": [
-      'Állj egy függőleges rúd elé, a lábfejed kezdetben legyen egy vonalban a rúddal. Ha a lábfej távolabb van a rúdtól, egy kicsit nehezebb a gyakorlat.',
-      'Feszítsd meg a törzsizmokat, a fejtetőtől a sarokig egy vonalban maradjon a tested.',
-      'Amikor kinyújtod a könyököd, a lapockák távolodnak egymástól.',
-      'Amikor elindítod a húzó mozdulatot, először a lapockákat közelítsd egymáshoz (lapockazárás), és csak utána hajlítsd a könyököd.',
-      'Ha a lapocka mozgását nem tudod még különválasztani a könyök hajlításától, gyakorold csak a lapockamozgást, könyökhajlítás nélkül.'
-    ],
-    "vizszintes_huzodzkodas_konnyebb": [
-      'Ehhez a gyakorlathoz egy olyan vízszintes rúd szükséges, ami kb. a szegycsontod magasságában van.',
-      'Ki kell tapasztalni, hogy a sarkadat hova érdemes betámasztanod, mert ez befolyásolja a gyakorlat nehézségét is.',
-      'Vigyázz, hogy a gyakorlat végzése közben ne csússzon ki a lábad!',
-      'Feszítsd meg a törzsizmokat, a fejtetőtől a sarokig egy vonalban maradjon a tested.',
-      'Amikor kinyújtod a könyököd, a lapockák távolodnak egymástól.',
-      'Amikor elindítod a húzó mozdulatot, először a lapockákat közelítsd egymáshoz, és csak utána hajlítsd a könyököd.',
-      'Próbáld idővel a mellkasodat hozzáérinteni a rúdhoz.'
-    ],
-    "vizszintes_huzodzkodas_nehezebb": [
-      'Ehhez a gyakorlathoz egy olyan vízszintes rúd szükséges, ami kb. a csípőd magasságában van.',
-      'Ki kell tapasztalni, hogy a sarkadat hova érdemes betámasztanod, mert ez befolyásolja a gyakorlat nehézségét is.',
-      'Ha túl nehéz egyenes térddel végezve (vagy nem elég stabil), akkor eleinte hajlítsd a térded, és a sarkak helyett teljes talppal támaszd meg magad.',
-      'Vigyázz, hogy a gyakorlat végzése közben ne csússzon ki a lábad!',
-      'Feszítsd meg a törzsizmokat, a fejtetőtől a sarokig (vagy térdig) egy vonalban maradjon a tested.',
-      'Amikor kinyújtod a könyököd, a lapockák távolodnak egymástól.',
-      'Amikor elindítod a húzó mozdulatot, először a lapockákat közelítsd egymáshoz, és csak utána hajlítsd a könyököd.',
-      'Próbáld idővel a mellkasodat hozzáérinteni a rúdhoz.'
-    ],
-    "huzodzkodas_konnyitve": [
-      'Ez a gyakorlat bevezetés a függőleges irányú húzógyakorlatokba, rávezet a húzódzkodásra.',
-      'Az animációban felső fogást láthatsz, de végezheted alsó fogással is (a tenyerek néznek feléd). Ez általában könnyebbnek bizonyul.',
-      'Amikor a könyök nyújtva van, a lapockákat kiengedheted, ez a passzív "lógás".',
-      'A húzás elindításakor zárd és told lefelé a lapockákat.',
-      'A könyököd tartsd a törzsedhez közel.',
-      'A válladat ne húzd fel, amikor hajlítva van a könyököd.',
-      'A lábaddal csak annyit segíts, amennyi szükséges. Próbáld minél jobban lecsökkenteni a segítséget.',
-      'A gerinced tartsd egyenesen.',
-      'A teljes mozgástartományban a szegycsont felső része a csukló magasságába kerül vagy akár magasabbra.'
-    ],
-    "lapocka_huzodzkodas": [
-      'Ez az első gyakorlat, aminél a teljes testsúlyodat megtartod függeszkedésben.',
-      'Eleinte lehet, hogy csak pár másodpercig tudsz függeszkedni, de idővel megerősödik az alkarod, a fogásod.',
-      'Passzív függeszkedésből indul a gyakorlat, a könyök pedig végig nyújtva marad, csak a lapocka dolgozik.',
-      'Zárd a lapockát és told lefelé, amennyire tudod.',
-      'Nem baj, ha eleinte alig érzékelhető a mozdulat, sok gyakorlással fejlődni fogsz.',
-      'Ha nehéz elválasztani a könyök hajlításától a lapocka zárását és letolását, gyakorolhatod függeszkedés nélkül, magastartásban.'
-    ],
-    "feszitve_fuggeszkedes": [
-      'Ez a húzódzkodás felső pozíciója, ahol már a lapocka mellett a karhajlító izmok is dolgoznak.',
-      'Találj egy biztonságos módot arra, hogy feljuss a feszítve függeszkedésbe.',
-      'Kérhetsz segítséget valakitől, hogy asszisztálással fel tudd húzni magad.',
-      'Használhatsz egy erős gumiszalagot, amit a rúdra középen rögzítesz.',
-      'Felléphetsz valamilyen dobozra, székre, vagy felmászhatsz a húzódzkodó rúd oszlopán.',
-      'Megpróbálhatod bordásfalon végezni a gyakorlatot.',
-      'Megpróbálhatsz ugrásból elég lendületet szerezni ahhoz, hogy fel tudd húzni magad. Érdemes óvatosan kipróbálni az ugrás erősségét, hogy ne verd be a fejed vagy az állad.',
-      'Ezt a gyakorlatot ne ismétlésekben mérd, hanem időben, amíg tartani tudod a feszítést.'
-    ],
-    "fel_guggolas": [
-      'Ez a gyakorlat ahhoz hasonlít, mintha le akarnál ülni egy székre.',
-      'Jó, ha a lépegető vagy pad kb. térdmagasságban van.',
-      'Az alsó pozícióban ne helyezd a testsúlyod a lépegetőre, csak finoman érintsd meg, hogy mindig tudd, teljes mozgástartományon végzed a gyakorlatot.',
-      'Ha mégis leülsz az alsó pozícióban, ne lendületből állj fel, hanem lassan, kontrolláltan.',
-      'A térd a lábfej irányában mozduljon el, ne hagyd, hogy kifelé vagy befelé eltérjen ettől a síktól.',
-      'Kismértékben előredőlhetsz egyenes háttal az alsó pozícióban.',
-      'Ha kinyújtod a karjaid mellső középtartásba, az segít az egyensúlyozásban.',
-      'A terpesz legyen kb. vállszéles.',
-      'A sarkad végig maradjon a talajon.'
-    ],
-    "guggolas_konnyitve": [
-      'Amikor először guggolunk úgy, hogy a sarkunk a talajon marad, általában úgy érezzük, hanyatt fogunk esni.',
-      'Ezért ennél a gyakorlatnál a karod segít, hogy ne ess hanyatt. Ugyanakkor ne húzd magad fel a karod segítségével.',
-      'Csak az alsótest izmaival told vissza magad állásba.',
-      'A terpesz legyen kb. vállszéles.',
-      'A térd a lábfej irányában mozduljon el, ne hagyd, hogy kifelé vagy befelé eltérjen ettől a síktól.',
-      'A sarkad végig maradjon a talajon.',
-      'Ha nehéznek bizonyul mélyre guggolni, akkor érdemes az alsó pozícióban hosszabb időt eltölteni, szükség szerint kapaszkodva. Ez a mobilitásodat is javíthatja.'
-    ],
-    "kitores": [
-      'Próbálj olyan harántterpeszt felvenni, amelynél az elöl és hátul levő lábfej között kb. 2-3 lábfejnyi a távolság.',
-      'Az elöl levő lábad talpa végig maradjon a talajon, a sarkad se emeld fel.',
-      'A hátul levő lábnál viszont a gyakorlat során nem ér le a sarok a talajra.',
-      'Kb. derékszögig hajlítsd mindkét térded.',
-      'Vigyázz, hogy a térded ne koppanjon a talajon, inkább állítsd meg néhány centire a talajtól, vagy érintsd le óvatosan.',
-      'A felsőtested végig egyenes maradjon, a fejed se lógasd.',
-      'A súlypontod tartsd középen, hogy a két lábad egyformán terheld.',
-      'A térd végig maradjon a lábfej síkjában.',
-      'Ne felejtsd el mindkét oldalra elvégezni a gyakorlatot!'
-    ],
-    "teljes_guggolas": [
-      'A terpesz legyen kb. vállszéles.',
-      'A térd a lábfej irányában mozduljon el, ne hagyd, hogy kifelé vagy befelé eltérjen ettől a síktól.',
-      'A sarkad végig maradjon a talajon.',
-      'A felsőtested próbáld függőlegesen tartani, de enyhén előredőlhetsz.',
-      'A térded végig nagyjából a lábfejed felett maradjon.',
-      'Ha nehéznek bizonyul mélyre guggolni, akkor érdemes az alsó pozícióban hosszabb időt eltölteni, szükség szerint kapaszkodva. Ez a mobilitásodat is javíthatja.',
-      'Kezdheted olyan mély guggolással, hogy a combod és a sípcsontod derékszöget zárjon be, és több hét alatt próbálj egyre mélyebbre guggolni.'
-    ],
-    "terdemeles_hanyattfekvesben": [
-      'A gyakorlat során az alsóháti szakaszt végig a talajon kell tartani.',
-      'A megfelelő medence helyzet azzal ellenőrizhető, hogy a derekad feletti részen a talaj és a hátad közé nem fér be a kezed.',
-      'A fejedet leteheted a talajra, de ha úgy kényelmesebb, kicsit megemelheted. Viszont ne feszíts rá a nyakizmaidra.',
-      'A karod a test mellett a talajon lehet, de ne segíts vele! A térded csak a törzsizmok munkájával húzd fel.',
-      'A gyakorlat alsó pozíciójában a sarkad ne érjen le a földre, néhány centire állítsd meg. Ha a mozgástartomány ellenőrzése miatt mégis leérinted, akkor éppen csak egy pillanatra tedd.'
-    ],
-    "terdemeles_padon": [
-      'A törzsizmaidat végig feszítsd meg, a gyakorlat végzése közben ne tedd le a lábad a talajra.',
-      'Megkapaszkodhatsz a pad vagy a lépegető szélében, de csak amennyire minimálisan szükséges.',
-      'Minél hátrébb dőlsz a felsőtesteddel, annál könnyebb a gyakorlat. Találd meg a szöget, ami elég kihívást jelent.',
-      'Segíthet, ha a lábaidat megfeszíted és egymáshoz szorítod.',
-      'Ne csak a térded húzd a mellkasodhoz, hanem a mellkasod is közelítsd kicsit a köldököd felé, ezzel aktiválva a törzsizmokat.'
-    ],
-    "labemeles_hanyattfekvesben": [
-      'A gyakorlat során az alsóháti szakaszt végig a talajon kell tartani.',
-      'A megfelelő medence helyzet azzal ellenőrizhető, hogy a derekad feletti részen a talaj és a hátad közé nem fér be a kezed.',
-      'A fejedet leteheted a talajra, de ha úgy kényelmesebb, kicsit megemelheted. Viszont ne feszíts rá a nyakizmaidra.',
-      'A karod a test mellett a talajon lehet, de ne segíts vele! A lábad csak a törzsizmok munkájával húzd fel.',
-      'A gyakorlat alsó pozíciójában a sarkad ne érjen le a földre, néhány centire állítsd meg. Ha a mozgástartomány ellenőrzése miatt mégis leérinted, akkor éppen csak egy pillanatra tedd.',
-      'Ha a gyakorlat alsó pozíciójában elemelkedik az alsóháti szakasz, akkor könnyíthetsz a gyakorlaton azzal, hogy a lábemelést hajlított térddel végzed, de nyújtott térddel engeded le.',
-      'Ha még így is túl nehéznek bizonyul, akkor állítsd meg a lábad magasabban, és idővel közelítsd egyre jobban a talajhoz, hogy teljes mozgástartományon dolgozz.'
-    ],
-    "terdemeles_fuggeszkedesben": [
-      'Aktív függeszkedésben végezd a gyakorlatot: zárd a lapockát és told lefelé, amennyire tudod.',
-      'A nyújtott lábad kicsit a tested előtt maradjon, hogy ne lengj ki a gyakorlat végzése közben.',
-      'A törzsizmaid végig tartsd megfeszítve, ezzel stabilizálod is a tested.',
-      'A térded a törzsizmok megfeszítésével húzd fel a mellkasodhoz (vagy legalább addig, hogy a combod vízszintes legyen).',
-      'A felsőtested ne dőljön nagyon hátra, próbáld annyira függőlegesen tartani, amennyire csak lehet.',
-      'Eleinte lehet, hogy csak pár másodpercig tudsz függeszkedni, de idővel megerősödik az alkarod, a fogásod.',
-    ],
+  // Open and close sidebar
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+   
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
   }
 
-  show_exercise_content();
-
-  const exercise_header = document.getElementById( 'exercise-header' );
-  exercise_header.innerText = element.innerText;
-  const active_exercise_node = document.getElementById("active-exercise");
-  if (active_exercise_node) {
-    active_exercise_node.parentElement.classList.remove("w3-light-grey");
-    active_exercise_node.remove();
+  // Filter exercises
+  function filter_exercises(element) {
+    clear_exercise_filter();
+    filter = element.classList[0];
+    const exercises = document.querySelectorAll("a.novice,a.beginner,a.intermediate,a.advanced,a.elite");
+    for (let i = 0; i < exercises.length; i++) {
+      if (!exercises[i].classList.contains(filter)){
+        exercises[i].classList.add("w3-hide");
+      }
+    }
+    if (document.getElementById("small_header").getClientRects().length) {
+      w3_open();
+    }
+    const accordions = document.querySelectorAll(`[id$="_gyakorlatok"]`);
+    for (let i = 0; i < accordions.length; i++) {
+      open_accordion(accordions[i]);
+    }
+    
+    clear_filter = document.getElementById("clear_filter");
+    clear_filter.innerHTML = '<b>Szűrő: </b>' + element.innerText + '  <i class="fa fa-remove"></i>';
+    if (clear_filter.classList.contains("w3-hide")){
+      clear_filter.classList.remove("w3-hide");
+    }
   }
-  element.innerHTML = '<i class="fa fa-caret-right w3-margin-right" id="active-exercise"></i>'+element.innerText;
-  element.classList.add("w3-light-grey");
 
-  clearInterval(annotations_interval_id);
-  var textDiv = document.getElementById('annotations-sync');
-  textDiv.innerHTML = '';
+  function clear_exercise_filter() {
+    const exercises = document.querySelectorAll("a.novice,a.beginner,a.intermediate,a.advanced,a.elite");
+    for (let i = 0; i < exercises.length; i++) {
+      if (exercises[i].classList.contains("w3-hide")){
+        exercises[i].classList.remove("w3-hide");
+      }
+    }
+    clear_filter = document.getElementById("clear_filter");
+    if (!clear_filter.classList.contains("w3-hide")){
+      clear_filter.classList.add("w3-hide");
+    }
+    const accordions = document.querySelectorAll(`[id$="_gyakorlatok"]`);
+    for (let i = 0; i < accordions.length; i++) {
+      close_accordion(accordions[i]);
+    }
+  }
 
-  const iframe = document.getElementById( 'api-frame' );
-  const uid = uids[element.id];
-  const annotations = all_annotations[element.id];
+  // Change content
+  function show_exercise_content() {
+    const exercise_content = document.getElementById("exercise_content")
+    if (exercise_content.classList.contains("w3-hide")) {
+      exercise_content.classList.remove("w3-hide");
+      document.getElementById("welcome_content").classList.add("w3-hide");
+    }
+    w3_close();
+  }
 
-  document.cookie = "exercise="+element.id;
-  
-  // By default, the latest version of the viewer API will be used.
-  var client = new Sketchfab( iframe );
-  // Alternatively, you can request a specific version.
-  // var client = new Sketchfab( '1.12.1', iframe );
-  
-  client.init( uid, {
-    success: function onSuccess( api ){
-        api.addEventListener( 'viewerready', function() {
-            
-            // API is ready to use
-            
-            // set BeStrong texture on models
-            api.getMaterialList(function (err, materials) {
-              for (var i = 0; i < materials.length; i++) {
-                var m = materials[i];
-                if (m.name == 'snow.shirt') {
-                  api.addTexture('https://gergelyzsolt89.github.io/esmegismozog/GEO-snow_shirt.jpg', function(err, textureUid) {
-                      if (!err) {
-                          m.channels.AlbedoPBR.texture = {uid: textureUid};
-                          m.channels.AlbedoPBR.color = false;
-                          api.setMaterial(m);
-                      }
-                  });
-                  break;
-                }
-              }
-            });
-            
-            var l = annotations.length;
-            var i = 0;
-            textDiv.innerHTML = annotations[i];
-            annotations_interval_id = setInterval(function () {
-              i++;
-              if (i === l) i = 0;
-              textDiv.innerHTML = annotations[i];
-            }, 10000);
-        } );
-        /*api.addEventListener('animationEnded', function() {
-            window.console.log('One more rep');
-        });*/
-    },
-    error: function onError() {
-        console.log( 'Viewer error' );
-    },
-    autostart: 1,
-    camera: 0,
-    preload: 1,
-    scrollwheel: 0
-  } );
-}
+  function show_welcome_content() {
+    const welcome_content = document.getElementById("welcome_content")
+    if (welcome_content.classList.contains("w3-hide")) {
+      welcome_content.classList.remove("w3-hide");
+      document.getElementById("exercise_content").classList.add("w3-hide");
+    }
+    const active_exercise_node = document.getElementById("active-exercise");
+    if (active_exercise_node) {
+      active_exercise_node.parentElement.classList.remove("w3-light-grey");
+      active_exercise_node.remove();
+    }
+    w3_close();
+    clear_exercise_filter();
+  }
+
+  var annotations_interval_id = -1;
+
+  function load_exercise(event) {
+    const element = event.currentTarget;
+    const uids = {
+      "fekvotamasz_huzodzkodon_magas": 'ca8591b7c59d47efaeca9c2b1e9e7fd1',
+      "fekvotamasz_huzodzkodon_alacsony": 'acdd1a1c25f24742af3da28eedb1fd85',
+      "fekvotamasz_terdelesben": '6555abb675d44898b73508ccd77959f0',
+      "teljes_fekvotamasz": 'd9cd460de2514220bc1ebda84c578bfb',
+      "szuk_fekvotamasz": '88bbb3554a3b491ba241a0d310d141c3',
+      "felemas_fekvotamasz": '0df5638884044d60a26100f021fa4a50',
+      "huzodzkodas_allva": '5c8622be369640858ed6947d07701e6b',
+      "vizszintes_huzodzkodas_konnyebb": '84fccca398204a018d2b6d228fd72e66',
+      "vizszintes_huzodzkodas_nehezebb": 'ed57a8e2c5c94e4881fb550f536c86fc',
+      "huzodzkodas_konnyitve": '3441348df68f41e18e48f5357294fc52',
+      "lapocka_huzodzkodas": '16efd5cc01f743748299b46ee3e26e89',
+      "feszitve_fuggeszkedes": 'f43566b2baa24f62a7b34da2a7f3e22e',
+      "fel_guggolas": '69c6bb54d5f548d3b134d9799d0693ee',
+      "guggolas_konnyitve": '0f11a5f237a04eb791b5c1a3d1287ffd',
+      "kitores": 'a459070034af42b3a0fd5cdac82054b1',
+      "teljes_guggolas": '7fd9f2468ca4486bad4da7a2ca2435dc',
+      "terdemeles_hanyattfekvesben": '05f143bc42394caea0eea1028827e12e',
+      "terdemeles_padon": 'e3f554c623504d25aacd12359d4865e8',
+      "labemeles_hanyattfekvesben": '7056f3cc54484036aaf961f8c7678388',
+      "terdemeles_fuggeszkedesben": 'ad1bb198d4e045a48b4b6c89e5c25bbb',
+    }
+
+    const all_annotations = {
+      "fekvotamasz_huzodzkodon_magas": [
+        'Figyelj arra, hogy végig feszesen tartsd a törzsizmaid, beleértve a farizmokat is. A válltól a bokáig próbáld egy vonalban tartani a tested a gyakorlat közben.',
+        'A könyököd végig maradjon a tested mellett.',
+        'A kiinduló helyzetben ne állj teljesen függőlegesen, maradjanak az izmok feszesen.'
+      ],
+      "fekvotamasz_huzodzkodon_alacsony": [
+        'Figyelj arra, hogy végig feszesen tartsd a törzsizmaid, beleértve a farizmokat is. A válltól a bokáig próbáld egy vonalban tartani a tested a gyakorlat közben.',
+        'A könyököd végig maradjon a tested mellett.',
+        'A mellkas majdnem megérinti a rudat az alsó pozícióban, a kiinduló helyzetben a könyökök szinte teljes nyújtva vannak.'
+      ],
+      "fekvotamasz_terdelesben": [
+        'Figyelj arra, hogy végig feszesen tartsd a törzsizmaid, beleértve a farizmokat is. A válltól a térdig próbáld egy vonalban tartani a tested a gyakorlat közben.',
+        'A könyököd végig maradjon a tested mellett.',
+        'A lábfejek lehetnek a levegőben, de a talajon is lehetnek lábujjhegyen. Ez utóbbi segíthet feszesebben tartani az alsó testet.',
+        'Markold meg a talajt, ahogy a könnyebb gyakorlatoknál a rudat. A tenyér hüvelykujj felőli részét is végig tartsd a talajon.'
+      ],
+      "teljes_fekvotamasz": [
+        'Tartsd végig feszesen a törzsizmaid, beleértve a farizmokat is. A válltól a bokáig próbáld egy vonalban tartani a tested a gyakorlat közben.',
+        'A térdek végig legyenek nyújtva, esetleg minimálisan hajlítva.',
+        'Ha ebben a pozícióban valamiért fájdalmat érzel a csuklódban, átmenetileg megpróbálhatod öklön végezni a gyakorlatot.',
+        'A nyak maradjon természetes szögben, nem szükséges megfeszíteni vagy megemelni a fejet. De ne lógasd a fejed.',
+        'A könyököd végig maradjon a tested mellett.',
+        'Markold meg a talajt, a tenyér hüvelykujj felőli részét is végig tartsd a talajon.'
+      ],
+      "szuk_fekvotamasz": [
+        'Tartsd végig feszesen a törzsizmaid, beleértve a farizmokat is.',
+        'A térdek végig legyenek nyújtva, esetleg minimálisan hajlítva.',
+        'A tenyerek itt már nem párhuzamosak egymással, a mutatóujjak össze is érhetnek.',
+        'A könyök a test mellett marad, az alkar az ujjak vonalában legyen.',
+        'A tenyér hüvelykujj felőli részét is végig tartsd a talajon. Ennél a gyakorlatnál ez nehezebb!'
+      ],
+      "felemas_fekvotamasz": [
+        'Tartsd végig feszesen a törzsizmaid, beleértve a farizmokat is.',
+        'A térdek végig legyenek nyújtva, esetleg minimálisan hajlítva.',
+        'A két kar nem egyformán dolgozik: a váll alatt maradó karnak kell a munka nagy részét elvégeznie.',
+        'A kiinduló helyzetben nyújtott kar segít, de most még az alsó pozícióban behajlíthatod.',
+        'A segítő kar minél távolabb van a testtől, annál kevesebbet tud segíteni.',
+        'Ne felejtsd el mindkét oldalra elvégezni a gyakorlatot!'
+      ],
+      "huzodzkodas_allva": [
+        'Állj egy függőleges rúd elé, a lábfejed kezdetben legyen egy vonalban a rúddal. Ha a lábfej távolabb van a rúdtól, egy kicsit nehezebb a gyakorlat.',
+        'Feszítsd meg a törzsizmokat, a fejtetőtől a sarokig egy vonalban maradjon a tested.',
+        'Amikor kinyújtod a könyököd, a lapockák távolodnak egymástól.',
+        'Amikor elindítod a húzó mozdulatot, először a lapockákat közelítsd egymáshoz (lapockazárás), és csak utána hajlítsd a könyököd.',
+        'Ha a lapocka mozgását nem tudod még különválasztani a könyök hajlításától, gyakorold csak a lapockamozgást, könyökhajlítás nélkül.'
+      ],
+      "vizszintes_huzodzkodas_konnyebb": [
+        'Ehhez a gyakorlathoz egy olyan vízszintes rúd szükséges, ami kb. a szegycsontod magasságában van.',
+        'Ki kell tapasztalni, hogy a sarkadat hova érdemes betámasztanod, mert ez befolyásolja a gyakorlat nehézségét is.',
+        'Vigyázz, hogy a gyakorlat végzése közben ne csússzon ki a lábad!',
+        'Feszítsd meg a törzsizmokat, a fejtetőtől a sarokig egy vonalban maradjon a tested.',
+        'Amikor kinyújtod a könyököd, a lapockák távolodnak egymástól.',
+        'Amikor elindítod a húzó mozdulatot, először a lapockákat közelítsd egymáshoz, és csak utána hajlítsd a könyököd.',
+        'Próbáld idővel a mellkasodat hozzáérinteni a rúdhoz.'
+      ],
+      "vizszintes_huzodzkodas_nehezebb": [
+        'Ehhez a gyakorlathoz egy olyan vízszintes rúd szükséges, ami kb. a csípőd magasságában van.',
+        'Ki kell tapasztalni, hogy a sarkadat hova érdemes betámasztanod, mert ez befolyásolja a gyakorlat nehézségét is.',
+        'Ha túl nehéz egyenes térddel végezve (vagy nem elég stabil), akkor eleinte hajlítsd a térded, és a sarkak helyett teljes talppal támaszd meg magad.',
+        'Vigyázz, hogy a gyakorlat végzése közben ne csússzon ki a lábad!',
+        'Feszítsd meg a törzsizmokat, a fejtetőtől a sarokig (vagy térdig) egy vonalban maradjon a tested.',
+        'Amikor kinyújtod a könyököd, a lapockák távolodnak egymástól.',
+        'Amikor elindítod a húzó mozdulatot, először a lapockákat közelítsd egymáshoz, és csak utána hajlítsd a könyököd.',
+        'Próbáld idővel a mellkasodat hozzáérinteni a rúdhoz.'
+      ],
+      "huzodzkodas_konnyitve": [
+        'Ez a gyakorlat bevezetés a függőleges irányú húzógyakorlatokba, rávezet a húzódzkodásra.',
+        'Az animációban felső fogást láthatsz, de végezheted alsó fogással is (a tenyerek néznek feléd). Ez általában könnyebbnek bizonyul.',
+        'Amikor a könyök nyújtva van, a lapockákat kiengedheted, ez a passzív "lógás".',
+        'A húzás elindításakor zárd és told lefelé a lapockákat.',
+        'A könyököd tartsd a törzsedhez közel.',
+        'A válladat ne húzd fel, amikor hajlítva van a könyököd.',
+        'A lábaddal csak annyit segíts, amennyi szükséges. Próbáld minél jobban lecsökkenteni a segítséget.',
+        'A gerinced tartsd egyenesen.',
+        'A teljes mozgástartományban a szegycsont felső része a csukló magasságába kerül vagy akár magasabbra.'
+      ],
+      "lapocka_huzodzkodas": [
+        'Ez az első gyakorlat, aminél a teljes testsúlyodat megtartod függeszkedésben.',
+        'Eleinte lehet, hogy csak pár másodpercig tudsz függeszkedni, de idővel megerősödik az alkarod, a fogásod.',
+        'Passzív függeszkedésből indul a gyakorlat, a könyök pedig végig nyújtva marad, csak a lapocka dolgozik.',
+        'Zárd a lapockát és told lefelé, amennyire tudod.',
+        'Nem baj, ha eleinte alig érzékelhető a mozdulat, sok gyakorlással fejlődni fogsz.',
+        'Ha nehéz elválasztani a könyök hajlításától a lapocka zárását és letolását, gyakorolhatod függeszkedés nélkül, magastartásban.'
+      ],
+      "feszitve_fuggeszkedes": [
+        'Ez a húzódzkodás felső pozíciója, ahol már a lapocka mellett a karhajlító izmok is dolgoznak.',
+        'Találj egy biztonságos módot arra, hogy feljuss a feszítve függeszkedésbe.',
+        'Kérhetsz segítséget valakitől, hogy asszisztálással fel tudd húzni magad.',
+        'Használhatsz egy erős gumiszalagot, amit a rúdra középen rögzítesz.',
+        'Felléphetsz valamilyen dobozra, székre, vagy felmászhatsz a húzódzkodó rúd oszlopán.',
+        'Megpróbálhatod bordásfalon végezni a gyakorlatot.',
+        'Megpróbálhatsz ugrásból elég lendületet szerezni ahhoz, hogy fel tudd húzni magad. Érdemes óvatosan kipróbálni az ugrás erősségét, hogy ne verd be a fejed vagy az állad.',
+        'Ezt a gyakorlatot ne ismétlésekben mérd, hanem időben, amíg tartani tudod a feszítést.'
+      ],
+      "fel_guggolas": [
+        'Ez a gyakorlat ahhoz hasonlít, mintha le akarnál ülni egy székre.',
+        'Jó, ha a lépegető vagy pad kb. térdmagasságban van.',
+        'Az alsó pozícióban ne helyezd a testsúlyod a lépegetőre, csak finoman érintsd meg, hogy mindig tudd, teljes mozgástartományon végzed a gyakorlatot.',
+        'Ha mégis leülsz az alsó pozícióban, ne lendületből állj fel, hanem lassan, kontrolláltan.',
+        'A térd a lábfej irányában mozduljon el, ne hagyd, hogy kifelé vagy befelé eltérjen ettől a síktól.',
+        'Kismértékben előredőlhetsz egyenes háttal az alsó pozícióban.',
+        'Ha kinyújtod a karjaid mellső középtartásba, az segít az egyensúlyozásban.',
+        'A terpesz legyen kb. vállszéles.',
+        'A sarkad végig maradjon a talajon.'
+      ],
+      "guggolas_konnyitve": [
+        'Amikor először guggolunk úgy, hogy a sarkunk a talajon marad, általában úgy érezzük, hanyatt fogunk esni.',
+        'Ezért ennél a gyakorlatnál a karod segít, hogy ne ess hanyatt. Ugyanakkor ne húzd magad fel a karod segítségével.',
+        'Csak az alsótest izmaival told vissza magad állásba.',
+        'A terpesz legyen kb. vállszéles.',
+        'A térd a lábfej irányában mozduljon el, ne hagyd, hogy kifelé vagy befelé eltérjen ettől a síktól.',
+        'A sarkad végig maradjon a talajon.',
+        'Ha nehéznek bizonyul mélyre guggolni, akkor érdemes az alsó pozícióban hosszabb időt eltölteni, szükség szerint kapaszkodva. Ez a mobilitásodat is javíthatja.'
+      ],
+      "kitores": [
+        'Próbálj olyan harántterpeszt felvenni, amelynél az elöl és hátul levő lábfej között kb. 2-3 lábfejnyi a távolság.',
+        'Az elöl levő lábad talpa végig maradjon a talajon, a sarkad se emeld fel.',
+        'A hátul levő lábnál viszont a gyakorlat során nem ér le a sarok a talajra.',
+        'Kb. derékszögig hajlítsd mindkét térded.',
+        'Vigyázz, hogy a térded ne koppanjon a talajon, inkább állítsd meg néhány centire a talajtól, vagy érintsd le óvatosan.',
+        'A felsőtested végig egyenes maradjon, a fejed se lógasd.',
+        'A súlypontod tartsd középen, hogy a két lábad egyformán terheld.',
+        'A térd végig maradjon a lábfej síkjában.',
+        'Ne felejtsd el mindkét oldalra elvégezni a gyakorlatot!'
+      ],
+      "teljes_guggolas": [
+        'A terpesz legyen kb. vállszéles.',
+        'A térd a lábfej irányában mozduljon el, ne hagyd, hogy kifelé vagy befelé eltérjen ettől a síktól.',
+        'A sarkad végig maradjon a talajon.',
+        'A felsőtested próbáld függőlegesen tartani, de enyhén előredőlhetsz.',
+        'A térded végig nagyjából a lábfejed felett maradjon.',
+        'Ha nehéznek bizonyul mélyre guggolni, akkor érdemes az alsó pozícióban hosszabb időt eltölteni, szükség szerint kapaszkodva. Ez a mobilitásodat is javíthatja.',
+        'Kezdheted olyan mély guggolással, hogy a combod és a sípcsontod derékszöget zárjon be, és több hét alatt próbálj egyre mélyebbre guggolni.'
+      ],
+      "terdemeles_hanyattfekvesben": [
+        'A gyakorlat során az alsóháti szakaszt végig a talajon kell tartani.',
+        'A megfelelő medence helyzet azzal ellenőrizhető, hogy a derekad feletti részen a talaj és a hátad közé nem fér be a kezed.',
+        'A fejedet leteheted a talajra, de ha úgy kényelmesebb, kicsit megemelheted. Viszont ne feszíts rá a nyakizmaidra.',
+        'A karod a test mellett a talajon lehet, de ne segíts vele! A térded csak a törzsizmok munkájával húzd fel.',
+        'A gyakorlat alsó pozíciójában a sarkad ne érjen le a földre, néhány centire állítsd meg. Ha a mozgástartomány ellenőrzése miatt mégis leérinted, akkor éppen csak egy pillanatra tedd.'
+      ],
+      "terdemeles_padon": [
+        'A törzsizmaidat végig feszítsd meg, a gyakorlat végzése közben ne tedd le a lábad a talajra.',
+        'Megkapaszkodhatsz a pad vagy a lépegető szélében, de csak amennyire minimálisan szükséges.',
+        'Minél hátrébb dőlsz a felsőtesteddel, annál könnyebb a gyakorlat. Találd meg a szöget, ami elég kihívást jelent.',
+        'Segíthet, ha a lábaidat megfeszíted és egymáshoz szorítod.',
+        'Ne csak a térded húzd a mellkasodhoz, hanem a mellkasod is közelítsd kicsit a köldököd felé, ezzel aktiválva a törzsizmokat.'
+      ],
+      "labemeles_hanyattfekvesben": [
+        'A gyakorlat során az alsóháti szakaszt végig a talajon kell tartani.',
+        'A megfelelő medence helyzet azzal ellenőrizhető, hogy a derekad feletti részen a talaj és a hátad közé nem fér be a kezed.',
+        'A fejedet leteheted a talajra, de ha úgy kényelmesebb, kicsit megemelheted. Viszont ne feszíts rá a nyakizmaidra.',
+        'A karod a test mellett a talajon lehet, de ne segíts vele! A lábad csak a törzsizmok munkájával húzd fel.',
+        'A gyakorlat alsó pozíciójában a sarkad ne érjen le a földre, néhány centire állítsd meg. Ha a mozgástartomány ellenőrzése miatt mégis leérinted, akkor éppen csak egy pillanatra tedd.',
+        'Ha a gyakorlat alsó pozíciójában elemelkedik az alsóháti szakasz, akkor könnyíthetsz a gyakorlaton azzal, hogy a lábemelést hajlított térddel végzed, de nyújtott térddel engeded le.',
+        'Ha még így is túl nehéznek bizonyul, akkor állítsd meg a lábad magasabban, és idővel közelítsd egyre jobban a talajhoz, hogy teljes mozgástartományon dolgozz.'
+      ],
+      "terdemeles_fuggeszkedesben": [
+        'Aktív függeszkedésben végezd a gyakorlatot: zárd a lapockát és told lefelé, amennyire tudod.',
+        'A nyújtott lábad kicsit a tested előtt maradjon, hogy ne lengj ki a gyakorlat végzése közben.',
+        'A törzsizmaid végig tartsd megfeszítve, ezzel stabilizálod is a tested.',
+        'A térded a törzsizmok megfeszítésével húzd fel a mellkasodhoz (vagy legalább addig, hogy a combod vízszintes legyen).',
+        'A felsőtested ne dőljön nagyon hátra, próbáld annyira függőlegesen tartani, amennyire csak lehet.',
+        'Eleinte lehet, hogy csak pár másodpercig tudsz függeszkedni, de idővel megerősödik az alkarod, a fogásod.',
+      ],
+    }
+
+    show_exercise_content();
+
+    const exercise_header = document.getElementById( 'exercise-header' );
+    exercise_header.innerText = element.innerText;
+    const active_exercise_node = document.getElementById("active-exercise");
+    if (active_exercise_node) {
+      active_exercise_node.parentElement.classList.remove("w3-light-grey");
+      active_exercise_node.remove();
+    }
+    element.innerHTML = '<i class="fa fa-caret-right w3-margin-right" id="active-exercise"></i>'+element.innerText;
+    element.classList.add("w3-light-grey");
+
+    clearInterval(annotations_interval_id);
+    var textDiv = document.getElementById('annotations-sync');
+    textDiv.innerHTML = '';
+
+    const iframe = document.getElementById( 'api-frame' );
+    const uid = uids[element.id];
+    const annotations = all_annotations[element.id];
+
+    document.cookie = "exercise="+element.id;
+
+    var l = annotations.length;
+    var i = 0;
+    textDiv.innerHTML = annotations[i];
+    annotations_interval_id = setInterval(function () {
+      i++;
+      if (i === l) i = 0;
+      textDiv.innerHTML = annotations[i];
+    }, 10000);
+
+    // console.log(viewer);
+    viewer.playAnimation(element.id);
+    
+    // // By default, the latest version of the viewer API will be used.
+    // var client = new Sketchfab( iframe );
+    // // Alternatively, you can request a specific version.
+    // // var client = new Sketchfab( '1.12.1', iframe );
+    
+    // client.init( uid, {
+    //   success: function onSuccess( api ){
+    //       api.addEventListener( 'viewerready', function() {
+              
+    //           // API is ready to use
+              
+    //           // set BeStrong texture on models
+    //           api.getMaterialList(function (err, materials) {
+    //             for (var i = 0; i < materials.length; i++) {
+    //               var m = materials[i];
+    //               if (m.name == 'snow.shirt') {
+    //                 api.addTexture('https://gergelyzsolt89.github.io/esmegismozog/GEO-snow_shirt.jpg', function(err, textureUid) {
+    //                     if (!err) {
+    //                         m.channels.AlbedoPBR.texture = {uid: textureUid};
+    //                         m.channels.AlbedoPBR.color = false;
+    //                         api.setMaterial(m);
+    //                     }
+    //                 });
+    //                 break;
+    //               }
+    //             }
+    //           });
+              
+    //           var l = annotations.length;
+    //           var i = 0;
+    //           textDiv.innerHTML = annotations[i];
+    //           annotations_interval_id = setInterval(function () {
+    //             i++;
+    //             if (i === l) i = 0;
+    //             textDiv.innerHTML = annotations[i];
+    //           }, 10000);
+    //       } );
+    //       /*api.addEventListener('animationEnded', function() {
+    //           window.console.log('One more rep');
+    //       });*/
+    //   },
+    //   error: function onError() {
+    //       console.log( 'Viewer error' );
+    //   },
+    //   autostart: 1,
+    //   camera: 0,
+    //   preload: 1,
+    //   scrollwheel: 0
+    // } );
+  }
+
+  document.querySelectorAll('.category-button')
+    .forEach(button => button.addEventListener('click', toggle_accordion));
+
+  document.querySelectorAll('.exercise-button')
+    .forEach(button => button.addEventListener('click', load_exercise));
 </script>
 
 </body>
