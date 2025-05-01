@@ -1,6 +1,6 @@
-import * as THREE from 'three';
-import { pass, texture, uniform, output, mrt, mix, velocity, uv, screenUV } from 'three/tsl';
-import { motionBlur } from 'three/addons/tsl/display/MotionBlur.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.175.0/build/three.module.js';
+import { pass, texture, uniform, output, mrt, mix, velocity, uv, screenUV } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/build/three.tsl.js';
+import { motionBlur } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/tsl/display/MotionBlur.js';
 import {
 	AmbientLight,
 	AnimationMixer,
@@ -23,16 +23,16 @@ import {
 	WebGLRenderer,
 	LinearToneMapping,
 	ACESFilmicToneMapping,
-} from 'three';
-import Stats from 'three/addons/libs/stats.module.js';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { KTX2Loader } from 'three/addons/loaders/KTX2Loader.js';
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { EXRLoader } from 'three/addons/loaders/EXRLoader.js';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+} from 'https://cdn.jsdelivr.net/npm/three@0.175.0/build/three.module.js';
+import Stats from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/libs/stats.module.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/loaders/GLTFLoader.js';
+import { KTX2Loader } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/loaders/KTX2Loader.js';
+import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/loaders/DRACOLoader.js';
+import { MeshoptDecoder } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/libs/meshopt_decoder.module.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/controls/OrbitControls.js';
+import { EXRLoader } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/loaders/EXRLoader.js';
+import { RoomEnvironment } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/environments/RoomEnvironment.js';
+import { CSS2DRenderer, CSS2DObject } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/renderers/CSS2DRenderer.js';
 
 // import { GUI } from 'dat.gui';
 

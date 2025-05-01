@@ -47,13 +47,13 @@
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
-    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 onclick="show_welcome_content()" style="cursor:pointer" class="w3-wide"><b>ÉS MÉGIS MOZOG</b></h3>
+    <i class="fa fa-remove w3-hide-large w3-button w3-display-topright close-button"></i>
+    <h3 style="cursor:pointer" class="w3-wide welcome-button"><b>ÉS MÉGIS MOZOG</b></h3>
   </div>
   <div class="w3-padding-16 w3-container w3-display-container">
     <h4><b>Gyakorlat kategóriák</b></h4>
   </div>
-  <p onclick="clear_exercise_filter()" class="w3-hide" id="clear_filter" style="margin-left: 25px;padding-left:10px;cursor:pointer">
+  <p class="w3-hide" id="clear_filter" style="margin-left: 25px;padding-left:10px;cursor:pointer">
     <b>Szűrő: </b>  <i class="fa fa-remove"></i>
   </p>
   <div class="w3-large w3-text-grey" style="font-weight:bold">
@@ -103,12 +103,12 @@
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-large">
-  <div onclick="show_welcome_content()" id="small_header" style="cursor:pointer" class="w3-bar-item w3-padding-24 w3-wide">ÉS MÉGIS MOZOG</div>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+  <div id="small_header" style="cursor:pointer" class="w3-bar-item w3-padding-24 w3-wide welcome-button">ÉS MÉGIS MOZOG</div>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right open-button"><i class="fa fa-bars"></i></a>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-overlay w3-hide-large close-button" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main w3-hide" id="exercise_content" style="margin-left:250px">
@@ -158,19 +158,19 @@
       A gyakorlatokat kategóriákba soroltam, amiket a bal oldalon található menüben érhetsz el.
       A kategóriákon belül fentről lefelé egyre nehezebbek a gyakorlatok, ezt színkóddal is jelöltem:
     </p>
-    <div class="w3-button w3-block w3-left-align"><p onclick="filter_exercises(this)" class="novice" style="padding-left:10px;margin:0px">
+    <div class="w3-button w3-block w3-left-align"><p class="novice exercise-filter" style="padding-left:10px;margin:0px">
       Teljesen kezdő
     </p></div>
-    <div class="w3-button w3-block w3-left-align"><p onclick="filter_exercises(this)" class="beginner" style="padding-left:10px;margin:0px">
+    <div class="w3-button w3-block w3-left-align"><p class="beginner exercise-filter" style="padding-left:10px;margin:0px">
       Kezdő
     </p></div>
-    <div class="w3-button w3-block w3-left-align"><p onclick="filter_exercises(this)" class="intermediate" style="padding-left:10px;margin:0px">
+    <div class="w3-button w3-block w3-left-align"><p class="intermediate exercise-filter" style="padding-left:10px;margin:0px">
       Középhaladó
     </p></div>
-    <div class="w3-button w3-block w3-left-align"><p onclick="filter_exercises(this)" class="advanced" style="padding-left:10px;margin:0px">
+    <div class="w3-button w3-block w3-left-align"><p class="advanced exercise-filter" style="padding-left:10px;margin:0px">
       Haladó
     </p></div>
-    <div class="w3-button w3-block w3-left-align"><p onclick="filter_exercises(this)" class="elite" style="padding-left:10px;margin:0px">
+    <div class="w3-button w3-block w3-left-align"><p class="elite exercise-filter" style="padding-left:10px;margin:0px">
       Elit
     </p></div>
     <p>A nehézségi szintekre kattintva rászűrhetsz csak az ahhoz a szinthez tartozó gyakorlatokra.</p>
@@ -245,9 +245,10 @@
   }
 
   // Filter exercises
-  function filter_exercises(element) {
+  function filter_exercises(event) {
+    const element = event.currentTarget;
     clear_exercise_filter();
-    filter = element.classList[0];
+    const filter = element.classList[0];
     const exercises = document.querySelectorAll("a.novice,a.beginner,a.intermediate,a.advanced,a.elite");
     for (let i = 0; i < exercises.length; i++) {
       if (!exercises[i].classList.contains(filter)){
@@ -262,7 +263,7 @@
       open_accordion(accordions[i]);
     }
     
-    clear_filter = document.getElementById("clear_filter");
+    const clear_filter = document.getElementById("clear_filter");
     clear_filter.innerHTML = '<b>Szűrő: </b>' + element.innerText + '  <i class="fa fa-remove"></i>';
     if (clear_filter.classList.contains("w3-hide")){
       clear_filter.classList.remove("w3-hide");
@@ -276,7 +277,7 @@
         exercises[i].classList.remove("w3-hide");
       }
     }
-    clear_filter = document.getElementById("clear_filter");
+    const clear_filter = document.getElementById("clear_filter");
     if (!clear_filter.classList.contains("w3-hide")){
       clear_filter.classList.add("w3-hide");
     }
@@ -540,62 +541,30 @@
     // console.log(viewer);
     viewer.playAnimation(element.id);
     
-    // // By default, the latest version of the viewer API will be used.
-    // var client = new Sketchfab( iframe );
-    // // Alternatively, you can request a specific version.
-    // // var client = new Sketchfab( '1.12.1', iframe );
-    
-    // client.init( uid, {
-    //   success: function onSuccess( api ){
-    //       api.addEventListener( 'viewerready', function() {
-              
-    //           // API is ready to use
-              
-    //           // set BeStrong texture on models
-    //           api.getMaterialList(function (err, materials) {
-    //             for (var i = 0; i < materials.length; i++) {
-    //               var m = materials[i];
-    //               if (m.name == 'snow.shirt') {
-    //                 api.addTexture('https://gergelyzsolt89.github.io/esmegismozog/GEO-snow_shirt.jpg', function(err, textureUid) {
-    //                     if (!err) {
-    //                         m.channels.AlbedoPBR.texture = {uid: textureUid};
-    //                         m.channels.AlbedoPBR.color = false;
-    //                         api.setMaterial(m);
-    //                     }
-    //                 });
-    //                 break;
-    //               }
-    //             }
-    //           });
-              
-    //           var l = annotations.length;
-    //           var i = 0;
-    //           textDiv.innerHTML = annotations[i];
-    //           annotations_interval_id = setInterval(function () {
-    //             i++;
-    //             if (i === l) i = 0;
-    //             textDiv.innerHTML = annotations[i];
-    //           }, 10000);
-    //       } );
-    //       /*api.addEventListener('animationEnded', function() {
-    //           window.console.log('One more rep');
-    //       });*/
-    //   },
-    //   error: function onError() {
-    //       console.log( 'Viewer error' );
-    //   },
-    //   autostart: 1,
-    //   camera: 0,
-    //   preload: 1,
-    //   scrollwheel: 0
-    // } );
   }
 
-  document.querySelectorAll('.category-button')
-    .forEach(button => button.addEventListener('click', toggle_accordion));
+  ['click', 'touchend'].forEach(eventType => {
+    document.querySelectorAll('.category-button')
+      .forEach(button => button.addEventListener(eventType, toggle_accordion));
 
-  document.querySelectorAll('.exercise-button')
-    .forEach(button => button.addEventListener('click', load_exercise));
+    document.querySelectorAll('.exercise-button')
+      .forEach(button => button.addEventListener(eventType, load_exercise));
+
+    document.querySelectorAll('.exercise-filter')
+      .forEach(button => button.addEventListener(eventType, filter_exercises));
+
+    document.querySelectorAll('.close-button')
+      .forEach(button => button.addEventListener(eventType, w3_close));
+        
+    document.querySelectorAll('.open-button')
+      .forEach(button => button.addEventListener(eventType, w3_open));
+        
+    document.querySelectorAll('.welcome-button')
+      .forEach(button => button.addEventListener(eventType, show_welcome_content));
+
+    document.querySelector('#clear_filter').addEventListener(eventType, clear_exercise_filter);
+  });
+
 </script>
 
 </body>
