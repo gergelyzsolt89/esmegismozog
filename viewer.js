@@ -1,6 +1,6 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.175.0/build/three.module.js';
-import { pass, texture, uniform, output, mrt, mix, velocity, uv, screenUV } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/build/three.tsl.js';
-import { motionBlur } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/tsl/display/MotionBlur.js';
+import * as THREE from '/esmegismozog/three.js-r175/build/three.module.min.js';
+import { pass, texture, uniform, output, mrt, mix, velocity, uv, screenUV } from '/esmegismozog/three.js-r175/build/three.tsl.min.js';
+import { motionBlur } from '/esmegismozog/three.js-r175/examples/jsm/tsl/display/MotionBlur.js';
 import {
 	AmbientLight,
 	AnimationMixer,
@@ -23,16 +23,14 @@ import {
 	WebGLRenderer,
 	LinearToneMapping,
 	ACESFilmicToneMapping,
-} from 'https://cdn.jsdelivr.net/npm/three@0.175.0/build/three.module.js';
-import Stats from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/libs/stats.module.js';
-import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/loaders/GLTFLoader.js';
-import { KTX2Loader } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/loaders/KTX2Loader.js';
-import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/loaders/DRACOLoader.js';
-import { MeshoptDecoder } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/libs/meshopt_decoder.module.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/controls/OrbitControls.js';
-import { EXRLoader } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/loaders/EXRLoader.js';
-import { RoomEnvironment } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/environments/RoomEnvironment.js';
-import { CSS2DRenderer, CSS2DObject } from 'https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/renderers/CSS2DRenderer.js';
+} from '/esmegismozog/three.js-r175/build/three.module.min.js';
+import { GLTFLoader } from '/esmegismozog/three.js-r175/examples/jsm/loaders/GLTFLoader.js';
+import { KTX2Loader } from '/esmegismozog/three.js-r175/examples/jsm/loaders/KTX2Loader.js';
+import { DRACOLoader } from '/esmegismozog/three.js-r175/examples/jsm/loaders/DRACOLoader.js';
+import { MeshoptDecoder } from '/esmegismozog/three.js-r175/examples/jsm/libs/meshopt_decoder.module.js';
+import { OrbitControls } from '/esmegismozog/three.js-r175/examples/jsm/controls/OrbitControls.js';
+import { EXRLoader } from '/esmegismozog/three.js-r175/examples/jsm/loaders/EXRLoader.js';
+import { CSS2DRenderer, CSS2DObject } from '/esmegismozog/three.js-r175/examples/jsm/renderers/CSS2DRenderer.js';
 
 // import { GUI } from 'dat.gui';
 
@@ -92,10 +90,6 @@ export class Viewer {
 
 		this.prevTime = 0;
 
-		this.stats = new Stats();
-		this.stats.dom.height = '48px';
-		[].forEach.call(this.stats.dom.children, (child) => (child.style.display = ''));
-
 		this.backgroundColor = new Color(this.state.bgColor);
 
 		this.scene = new Scene();
@@ -123,8 +117,6 @@ export class Viewer {
 
 		this.pmremGenerator = new PMREMGenerator(this.renderer);
 		this.pmremGenerator.compileEquirectangularShader();
-
-		this.neutralEnvironment = this.pmremGenerator.fromScene(new RoomEnvironment()).texture;
 
 		this.controls = new OrbitControls(this.defaultCamera, this.labelRenderer.domElement);
 		this.controls.screenSpacePanning = true;
@@ -168,7 +160,6 @@ export class Viewer {
 		const dt = (time - this.prevTime) / 1000;
 
 		this.controls.update();
-		this.stats.update();
 		this.mixer && this.mixer.update(dt);
 		this.render();
 
@@ -630,11 +621,6 @@ export class Viewer {
 	getCubeMapTexture(environment) {
 		const { id, path } = environment;
 
-		// neutral (THREE.RoomEnvironment)
-		if (id === 'neutral') {
-			return Promise.resolve({ envMap: this.neutralEnvironment });
-		}
-
 		// none
 		if (id === '') {
 			return Promise.resolve({ envMap: null });
@@ -790,14 +776,6 @@ export class Viewer {
 		// Camera controls.
 		this.cameraFolder = gui.addFolder('Cameras');
 		this.cameraFolder.domElement.style.display = 'none';
-
-		// Stats.
-		const perfFolder = gui.addFolder('Performance');
-		const perfLi = document.createElement('li');
-		this.stats.dom.style.position = 'static';
-		perfLi.appendChild(this.stats.dom);
-		perfLi.classList.add('gui-stats');
-		perfFolder.__ul.appendChild(perfLi);
 
 		const guiWrap = document.createElement('div');
 		this.el.appendChild(guiWrap);
