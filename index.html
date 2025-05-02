@@ -164,13 +164,13 @@
       Elit
     </p></div>
     <p>A nehézségi szintekre kattintva rászűrhetsz csak az ahhoz a szinthez tartozó gyakorlatokra.</p>
-    <div style="margin-top:83px;margin-bottom:83px"><a onclick="$('#modalUser').modal('show');" href="javascript:void(0)">A weboldal bemutatójának ismételt megtekintéséhez kattints ide.</a></div>
+    <!-- <div style="margin-top:83px;margin-bottom:83px"><a onclick="$('#modalUser').modal('show');" href="javascript:void(0)">A weboldal bemutatójának ismételt megtekintéséhez kattints ide.</a></div> -->
   </div>
 
 </div>
   
 <!-- Arcade modal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="modalUser" aria-hidden="true" style="z-index:999999">
+<!-- <div class="modal fade" tabindex="-1" role="dialog" id="modalUser" aria-hidden="true" style="z-index:999999">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -187,7 +187,7 @@
       $.cookie("esmegismozog_popup", "1");
     }
   });
-</script>
+</script> -->
 
 <!-- End page content -->
 
@@ -533,27 +533,49 @@
     
   }
 
-  ['click', 'touchend'].forEach(eventType => {
-    document.querySelectorAll('.category-button')
-      .forEach(button => button.addEventListener(eventType, toggle_accordion));
+  let touchStartY = 0;
+  let touchMoved = false;
 
-    document.querySelectorAll('.exercise-button')
-      .forEach(button => button.addEventListener(eventType, load_exercise));
+  function setCustomEventListener(element, callback) {
+    element.addEventListener('click', callback)
+    element.addEventListener('touchstart', (e) => {
+      touchMoved = false;
+      touchStartY = e.touches[0].clientY;
+    });
 
-    document.querySelectorAll('.exercise-filter')
-      .forEach(button => button.addEventListener(eventType, filter_exercises));
+    element.addEventListener('touchmove', (e) => {
+      const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+      if (deltaY > 10) {
+        touchMoved = true;
+      }
+    });
 
-    document.querySelectorAll('.close-button')
-      .forEach(button => button.addEventListener(eventType, w3_close));
-        
-    document.querySelectorAll('.open-button')
-      .forEach(button => button.addEventListener(eventType, w3_open));
-        
-    document.querySelectorAll('.welcome-button')
-      .forEach(button => button.addEventListener(eventType, show_welcome_content));
+    element.addEventListener('touchend', (e) => {
+      if (!touchMoved) {
+        callback(e);
+      }
+    });
+  }
 
-    document.querySelector('#clear_filter').addEventListener(eventType, clear_exercise_filter);
-  });
+  document.querySelectorAll('.category-button')
+    .forEach(button => setCustomEventListener(button, toggle_accordion));
+
+  document.querySelectorAll('.exercise-button')
+    .forEach(button => setCustomEventListener(button, load_exercise));
+
+  document.querySelectorAll('.exercise-filter')
+    .forEach(button => setCustomEventListener(button, filter_exercises));
+
+  document.querySelectorAll('.close-button')
+    .forEach(button => setCustomEventListener(button, w3_close));
+      
+  document.querySelectorAll('.open-button')
+    .forEach(button => setCustomEventListener(button, w3_open));
+      
+  document.querySelectorAll('.welcome-button')
+    .forEach(button => setCustomEventListener(button, show_welcome_content));
+
+  setCustomEventListener(document.querySelector('#clear_filter'), clear_exercise_filter);
 
 </script>
 
